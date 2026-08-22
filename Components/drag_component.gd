@@ -34,7 +34,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"mouse_button_left") and has_point(mouse_pos):
 		if mouse_over_type(Button):
 			return
+		get_viewport().set_input_as_handled()
 		drag_offset = get_offset()
+		draggable.move_to_front()
 		change_state(State.DRAGGING)
 	if event.is_action_released(&"mouse_button_left"):
 		change_state(State.DROPPING)
