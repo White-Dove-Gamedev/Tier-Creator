@@ -19,7 +19,7 @@ func _ready() -> void:
 	else:
 		return
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match drag_state:
 		State.IDLE:
 			pass
@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	if event.is_action_pressed(&"mouse_button_left") and has_point(mouse_pos):
+		if mouse_over_type(Button):
+			return
 		drag_offset = get_offset()
 		change_state(State.DRAGGING)
 	if event.is_action_released(&"mouse_button_left"):
@@ -53,16 +55,6 @@ func handle_dropping() -> void:
 		draggable.position = target.position + target.size / 2 - draggable.size / 2
 	change_state(State.IDLE)
 
-func get_offset() -> Vector2:
-	var mouse_pos = get_viewport().get_mouse_position()
-	var parent_pos = draggable.position
-	var offset = parent_pos - mouse_pos
-	return offset
-
-
-func has_point(point: Vector2) -> bool:
-	return Rect2(draggable.position, draggable.size).has_point(point)
-
 
 func find_drop_target() -> Control:
 	var my_rect := draggable.get_global_rect()
@@ -81,3 +73,24 @@ func find_drop_target() -> Control:
 				best_target = target
 
 	return best_target
+
+
+func mouse_over_type(type: Variant) -> bool:
+	for child in draggable.get_children():
+		if child is not Button:
+			continue
+		var is_in_point: bool = child.get_global_rect().has_point(get_viewport().get_mouse_position())
+		if is_instance_of(child, type) and is_in_point:
+			return true
+	return false
+
+
+func get_offset() -> Vector2:
+	var mouse_pos = get_viewport().get_mouse_position()
+	var parent_pos = draggable.position
+	var offset = parent_pos - mouse_pos
+	return offset
+
+
+func has_point(point: Vector2) -> bool:
+	return Rect2(draggable.position, draggable.size).has_point(point)
