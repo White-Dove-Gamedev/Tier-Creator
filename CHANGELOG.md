@@ -4,6 +4,20 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0]
+
+### Added
+
+A Card class.
+The Card can have text and texture, as well as being moved and deleted.
+
+A new default font: CourierPrime - Regular
+
+### Changed
+
+The DragComponent won't change state if the mouse is hovering over a button.
+Will probably look into making this more customizable than hard-coding this feature.
+
 ## [0.3.0]
 
 ### Added
