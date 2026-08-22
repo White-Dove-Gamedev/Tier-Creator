@@ -27,7 +27,8 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"mouse_button_left"):
+	var mouse_pos = get_viewport().get_mouse_position()
+	if event.is_action_pressed(&"mouse_button_left") and has_point(mouse_pos):
 		drag_offset = get_offset()
 		change_state(State.DRAGGING)
 	if event.is_action_released(&"mouse_button_left"):
@@ -48,3 +49,7 @@ func get_offset() -> Vector2:
 	var parent_pos = draggable.position
 	var offset = parent_pos - mouse_pos
 	return offset
+
+
+func has_point(point: Vector2) -> bool:
+	return Rect2(draggable.position, draggable.size).has_point(point)
