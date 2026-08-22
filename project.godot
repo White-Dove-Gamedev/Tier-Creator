@@ -22,8 +22,14 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
-"res://Components/": "gray"
+"res://Assets/": "yellow",
+"res://Components/": "gray",
+"res://TierCreator/": "green"
 }
+
+[gui]
+
+theme/custom_font="uid://coq85tu3n33dg"
 
 [input]
 
