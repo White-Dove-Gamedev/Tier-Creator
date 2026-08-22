@@ -4,6 +4,21 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0]
+
+### Added
+
+Added a card creator that lets the user set text and texture for any card.
+
+### Changed
+
+DragComponent now moves the parent node to the front of the screen.
+Cards now have a PanelContainer as a background if no texture is selected.
+
+### Fixed
+
+DragComponent now consumes the input. Prevents stacked draggables that become inseperable from ocurring.
+
 ## [0.4.0]
 
 ### Added
