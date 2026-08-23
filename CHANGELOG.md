@@ -4,6 +4,16 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0]
+
+### Added
+
+Added a CardLayer node for all instantiated cards to reparent to by default.
+
+### Changed
+
+CardCreator now tries to reparent created cards to the CardLayer if it exists, otherwise nothing happens.
+
 ## [0.5.0]
 
 ### Added

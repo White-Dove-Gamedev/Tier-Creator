@@ -37,6 +37,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		drag_offset = get_offset()
 		draggable.move_to_front()
+		draggable.reparent(get_tree().get_first_node_in_group("card_layer"))
 		change_state(State.DRAGGING)
 	if event.is_action_released(&"mouse_button_left"):
 		change_state(State.DROPPING)
