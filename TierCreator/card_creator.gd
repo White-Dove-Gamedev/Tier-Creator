@@ -24,7 +24,11 @@ func _ready() -> void:
 
 func _on_create_card_button_pressed() -> void:
 	var card: Card = CARD.instantiate()
-	add_sibling(card)
+	var card_layer := get_tree().get_first_node_in_group("card_layer") as CardLayer
+	if not card_layer:
+		push_error("Missing CardLayer node in scene tree")
+		return
+	card_layer.add_child(card)
 	card.position = preview_panel_container.global_position
 	card.card_label.text = preview_label.text
 	card.card_texture_rect.texture = preview_texture_rect.texture
