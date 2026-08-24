@@ -3,6 +3,7 @@ extends Node
 
 enum State {
 	IDLE,
+	PICKUP,
 	DRAGGING,
 	DROPPING,
 }
@@ -23,6 +24,8 @@ func _process(_delta: float) -> void:
 	match drag_state:
 		State.IDLE:
 			pass
+		State.PICKUP:
+			handle_pickup()
 		State.DRAGGING:
 			handle_dragging()
 		State.DROPPING:
@@ -35,16 +38,20 @@ func _input(event: InputEvent) -> void:
 		if mouse_over_type(Button):
 			return
 		get_viewport().set_input_as_handled()
-		drag_offset = get_offset()
-		draggable.move_to_front()
-		draggable.reparent(get_tree().get_first_node_in_group("card_layer"))
-		change_state(State.DRAGGING)
+		change_state(State.PICKUP)
 	if event.is_action_released(&"mouse_button_left"):
 		change_state(State.DROPPING)
 
 
 func change_state(new_state: State) -> void:
 	drag_state = new_state
+
+
+func handle_pickup() -> void:
+	drag_offset = get_offset()
+	draggable.move_to_front()
+	draggable.reparent(get_tree().get_first_node_in_group("card_layer"))
+	change_state(State.DRAGGING)
 
 
 func handle_dragging() -> void:
