@@ -4,6 +4,18 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0]
+
+### Added
+
+A state on whether DropComponent is occupied by another DragComponent. Also emits a signal with the new state.
+
+### Fixed
+
+A draggable nodes state wouldn't reset to IDLE if a drop got rejected.
+A missing check for releasing the mouse button.
+All draggable calculations now use global_position.
+
 ## [0.7.0]
 
 ### Added

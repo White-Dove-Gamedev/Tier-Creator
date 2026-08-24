@@ -18,6 +18,7 @@ func _ready() -> void:
 	if parent:
 		draggable = parent
 	else:
+		# TODO: proper error handling
 		return
 
 func _process(_delta: float) -> void:
@@ -39,7 +40,8 @@ func _input(event: InputEvent) -> void:
 			return
 		get_viewport().set_input_as_handled()
 		change_state(State.PICKUP)
-	if event.is_action_released(&"mouse_button_left"):
+	if event.is_action_released(&"mouse_button_left") and has_point(mouse_pos):
+		get_viewport().set_input_as_handled()
 		change_state(State.DROPPING)
 
 
@@ -56,14 +58,16 @@ func handle_pickup() -> void:
 
 func handle_dragging() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
-	draggable.position = mouse_pos + drag_offset
+	draggable.global_position = mouse_pos + drag_offset
 
 
 func handle_dropping() -> void:
-	var target = find_drop_target()
-	if target:
-		draggable.position = target.global_position + target.size / 2 - draggable.size / 2
-		draggable.reparent(target)
+	var target := find_drop_target()
+	if not target or target.find_child("DragComponent", true, false):
+		change_state(State.IDLE)
+		return
+	draggable.global_position = target.global_position + target.size / 2 - draggable.size / 2
+	draggable.reparent(target)
 	change_state(State.IDLE)
 
 
@@ -98,10 +102,10 @@ func mouse_over_type(type: Variant) -> bool:
 
 func get_offset() -> Vector2:
 	var mouse_pos = get_viewport().get_mouse_position()
-	var parent_pos = draggable.position
+	var parent_pos = draggable.global_position
 	var offset = parent_pos - mouse_pos
 	return offset
 
 
 func has_point(point: Vector2) -> bool:
-	return Rect2(draggable.position, draggable.size).has_point(point)
+	return Rect2(draggable.global_position, draggable.size).has_point(point)
