@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://coi231ukah42y" path="res://Components/drag_component.gd" id="2_cnoso"]
 
 [node name="Card" type="Control" unique_id=1709808378]
+custom_minimum_size = Vector2(96, 96)
+custom_maximum_size = Vector2(96, 96)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CardTextureRect" type="TextureRect" parent="." unique_id=212253354]
 unique_name_in_owner = true
@@ -48,6 +51,8 @@ custom_maximum_size = Vector2(96, 96)
 layout_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 4
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

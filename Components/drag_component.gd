@@ -41,6 +41,8 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		change_state(State.PICKUP)
 	if event.is_action_released(&"mouse_button_left") and has_point(mouse_pos):
+		if mouse_over_type(Button):
+			return
 		get_viewport().set_input_as_handled()
 		change_state(State.DROPPING)
 
