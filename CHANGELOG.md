@@ -4,6 +4,12 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.1]
+
+### Fixed
+
+The delete button not deleting because of the DragComponent.
+
 ## [0.8.0]
 
 ### Added
