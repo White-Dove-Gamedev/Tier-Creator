@@ -10,6 +10,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 A pickup State for DragComponent to simplify code.
 
+### Fixed
+
+A calculation error when reparenting a draggable node.
+
 ## [0.6.0]
 
 ### Added

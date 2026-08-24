@@ -62,7 +62,7 @@ func handle_dragging() -> void:
 func handle_dropping() -> void:
 	var target = find_drop_target()
 	if target:
-		draggable.position = target.position + target.size / 2 - draggable.size / 2
+		draggable.position = target.global_position + target.size / 2 - draggable.size / 2
 	change_state(State.IDLE)
 
 
