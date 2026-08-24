@@ -12,7 +12,7 @@ A pickup State for DragComponent to simplify code.
 
 ### Fixed
 
-A calculation error when reparenting a draggable node.
+A calculation error when reparenting a draggable node by using global_position.
 
 ## [0.6.0]
 
