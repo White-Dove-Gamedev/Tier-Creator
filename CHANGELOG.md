@@ -9,10 +9,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 
 A pickup State for DragComponent to simplify code.
+Draggable nodes reparent to the droppable nodes on success.
 
 ### Fixed
 
 A calculation error when reparenting a draggable node by using global_position.
+Size of the card got reset on reparent so it's been set to a minimum and maximum of 96.0 by 96.0.
 
 ## [0.6.0]
 
