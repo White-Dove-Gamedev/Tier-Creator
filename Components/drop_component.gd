@@ -21,7 +21,20 @@ func _ready() -> void:
 		# TODO: proper error handling
 		return
 	droppable.child_entered_tree.connect(_on_child_entered_tree)
+	droppable.child_exiting_tree.connect(_on_child_exiting_tree)
 
 
 func _on_child_entered_tree(node: Node) -> void:
-	print(node.find_child("DropComponent"))
+	var drag_component := node.find_child("DragComponent")
+	if not drag_component:
+		return
+	state = State.OCCUPIED
+	occupancy_changed.emit(state)
+
+
+func _on_child_exiting_tree(node: Node) -> void:
+	var drag_component := node.find_child("DragComponent")
+	if not drag_component:
+		return
+	state = State.UNOCCUPIED
+	occupancy_changed.emit(state)
