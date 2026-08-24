@@ -63,6 +63,7 @@ func handle_dropping() -> void:
 	var target = find_drop_target()
 	if target:
 		draggable.position = target.global_position + target.size / 2 - draggable.size / 2
+		draggable.reparent(target)
 	change_state(State.IDLE)
 
 
