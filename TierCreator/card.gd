@@ -15,12 +15,12 @@ func _ready() -> void:
 
 
 func set_sizes() -> void:
-	card_label.custom_minimum_size = Vector2(96.0, 96.0)
-	card_label.custom_maximum_size = Vector2(96.0, 96.0)
-	card_texture_rect.custom_minimum_size = Vector2(96.0, 96.0)
-	card_texture_rect.custom_maximum_size = Vector2(96.0, 96.0)
-	custom_minimum_size = Vector2(96.0, 96.0)
-	custom_maximum_size = Vector2(96.0, 96.0)
+	card_label.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
+	card_label.custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
+	card_texture_rect.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
+	card_texture_rect.custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
+	custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
+	custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
 
 
 func set_mouse_filters() -> void:
