@@ -33,7 +33,7 @@ func _on_child_entered_tree(node: Node) -> void:
 
 
 func _on_child_exiting_tree(node: Node) -> void:
-	var drag_component := node.find_child("DragComponent")
+	var drag_component := node.find_child("DragComponent", true, false)
 	if not drag_component:
 		return
 	state = State.UNOCCUPIED

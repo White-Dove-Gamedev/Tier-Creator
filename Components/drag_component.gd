@@ -78,9 +78,9 @@ func find_drop_target() -> Control:
 	var best_target: Control = null
 	var best_overlap: float = 0.0
 
-	for drop_component in get_tree().get_nodes_in_group("drop_target"):
-		var target := (drop_component as DropComponent).droppable
-		if target == null:
+	for drop_component in get_tree().get_nodes_in_group("drop_target") as Array[DropComponent]:
+		var target := drop_component.droppable
+		if target == null or drop_component.state == drop_component.State.OCCUPIED:
 			continue
 		var target_rect := target.get_global_rect()
 		if target_rect.intersects(my_rect):
