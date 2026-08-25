@@ -4,6 +4,12 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0]
+
+### Added
+
+Drop Targets, meaning Draggables will only drop with matching Droppables.
+
 ## [0.10.0]
 
 ### Added
