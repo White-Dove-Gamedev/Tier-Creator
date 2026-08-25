@@ -14,6 +14,10 @@ config/name="TierCreator"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Utils="*uid://dt8jt14lxjvug"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -23,6 +27,7 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://Assets/": "yellow",
+"res://Autoloads/": "gray",
 "res://Components/": "gray",
 "res://TierCreator/": "green"
 }
