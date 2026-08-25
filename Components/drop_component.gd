@@ -9,11 +9,12 @@ enum State {
 }
 
 @export var droppable: Control
+@export var drop_name: StringName = &"drop_target"
 
 var state := State.UNOCCUPIED
 
 func _ready() -> void:
-	add_to_group("drop_target")
+	add_to_group(drop_name)
 	var parent := get_parent() as Control
 	if parent:
 		droppable = parent

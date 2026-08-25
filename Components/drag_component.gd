@@ -9,6 +9,7 @@ enum State {
 }
 
 @export var draggable: Control = null
+@export var target_name: StringName = &"drop_target"
 
 var drag_state := State.IDLE
 var drag_offset := Vector2.ZERO
@@ -54,7 +55,7 @@ func change_state(new_state: State) -> void:
 func handle_pickup() -> void:
 	drag_offset = get_offset()
 	draggable.move_to_front()
-	draggable.reparent(get_tree().get_first_node_in_group("card_layer"))
+	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
 	change_state(State.DRAGGING)
 
 
@@ -78,7 +79,7 @@ func find_drop_target() -> Control:
 	var best_target: Control = null
 	var best_overlap: float = 0.0
 
-	for drop_component in get_tree().get_nodes_in_group("drop_target") as Array[DropComponent]:
+	for drop_component in get_tree().get_nodes_in_group(target_name) as Array[DropComponent]:
 		var target := drop_component.droppable
 		if target == null or drop_component.state == drop_component.State.OCCUPIED:
 			continue
