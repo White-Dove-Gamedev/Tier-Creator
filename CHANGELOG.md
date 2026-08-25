@@ -4,6 +4,24 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0]
+
+### Added
+
+A Cardgrid node for holding an array of DropNodes which dynamically change in size depending on the amount of Cards.
+Added a check to discard any already occupied DropComponents.
+
+### Changed
+
+Drop component now checks for any descendants when they exit a tree.
+Changed static typing logic for a loop.
+
+## [0.9.0]
+
+### Added
+
+A simple DropNode
+
 ## [0.8.1]
 
 ### Fixed

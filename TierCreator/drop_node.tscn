@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://g5fcgt0gasfi"]
+
+[ext_resource type="Script" uid="uid://0lbfsgl60or3" path="res://Components/drop_component.gd" id="1_1f6u6"]
+[ext_resource type="Script" uid="uid://f3xkg8sy2pce" path="res://TierCreator/drop_node.gd" id="1_cbopt"]
+
+[node name="DropNode" type="PanelContainer" unique_id=1953910116]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cbopt")
+
+[node name="DropComponent" type="Node" parent="." unique_id=1618995083]
+script = ExtResource("1_1f6u6")
+metadata/_custom_type_script = "uid://0lbfsgl60or3"
