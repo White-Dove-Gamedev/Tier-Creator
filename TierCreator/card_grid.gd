@@ -5,8 +5,7 @@ extends GridContainer
 const DROP_NODE = preload("uid://g5fcgt0gasfi")
 
 func _ready() -> void:
-	add_theme_constant_override(&"h_separation", 0)
-	add_theme_constant_override(&"v_separation", 0)
+	set_self()
 	add_drop_node()
 
 
@@ -26,3 +25,9 @@ func _on_drop_component_occupancy_changed(state: DropComponent.State, drop_node:
 		add_drop_node()
 	elif state == DropComponent.State.UNOCCUPIED:
 		drop_node.queue_free()
+
+
+func set_self() -> void:
+	columns = 10
+	add_theme_constant_override(&"h_separation", 0)
+	add_theme_constant_override(&"v_separation", 0)
