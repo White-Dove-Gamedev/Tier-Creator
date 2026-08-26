@@ -4,6 +4,16 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.0]
+
+### Changed
+
+TierLabel to TierName
+
+### Fixed
+
+TierName background improperly resizing
+
 ## [0.13.0]
 
 ### Added
