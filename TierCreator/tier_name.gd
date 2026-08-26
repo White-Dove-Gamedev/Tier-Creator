@@ -1,5 +1,5 @@
 @tool
-class_name TierLabel
+class_name TierName
 extends Container
 
 @onready var background_color_rect: ColorRect = %BackgroundColorRect
@@ -30,8 +30,11 @@ func set_label_settings() -> void:
 
 
 func connect_signals() -> void:
-	tier_label.resized.connect(_on_tier_label_resized)
+	resized.connect(_on_resized.bind(self))
+	tier_label.resized.connect(_on_resized.bind(tier_label))
 
 
-func _on_tier_label_resized() -> void:
-	background_color_rect.size = tier_label.size
+func _on_resized(node: Control) -> void:
+	if node == tier_label:
+		background_color_rect.size = node.size
+	tier_label.size = node.size
