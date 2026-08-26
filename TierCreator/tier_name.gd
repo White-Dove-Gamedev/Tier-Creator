@@ -13,12 +13,12 @@ func _ready() -> void:
 
 
 func set_sizes() -> void:
-	background_color_rect.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	background_color_rect.custom_maximum_size = Vector2(Utils.max_size_x, -1.0)
-	tier_label.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	tier_label.custom_maximum_size = Vector2(Utils.max_size_x, -1.0)
-	custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	custom_maximum_size = Vector2(Utils.max_size_x, -1.0)
+	background_color_rect.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	background_color_rect.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
+	tier_label.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	tier_label.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
+	custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
 
 
 func set_label_settings() -> void:

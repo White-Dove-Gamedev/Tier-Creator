@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://mrwhjrorygvm"]
+
+[ext_resource type="Script" uid="uid://cf3v2mx1q3hxn" path="res://TierCreator/category_settings.gd" id="1_gxwmk"]
+[ext_resource type="Texture2D" uid="uid://d1manpj48t40v" path="res://Assets/Icons/gear.svg" id="2_bjng0"]
+[ext_resource type="Texture2D" uid="uid://bhcvg8kwb2s12" path="res://Assets/Icons/ArrowUp.svg" id="2_qalxk"]
+[ext_resource type="Texture2D" uid="uid://48x1btfhphx1" path="res://Assets/Icons/ArrowDown.svg" id="3_bjng0"]
+
+[node name="CategorySettings" type="AspectRatioContainer" unique_id=1508587497]
+custom_minimum_size = Vector2(96, 96)
+custom_maximum_size = Vector2(96, -1)
+offset_right = 96.0
+offset_bottom = 96.0
+size_flags_vertical = 3
+script = ExtResource("1_gxwmk")
+
+[node name="SettingsHBoxContainer" type="HBoxContainer" parent="." unique_id=2005444687]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="SettingsTextureButton" type="TextureButton" parent="SettingsHBoxContainer" unique_id=824480061]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_bjng0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MoveButtonsVBoxContainer" type="VBoxContainer" parent="SettingsHBoxContainer" unique_id=1919169729]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpTextureButton" type="TextureButton" parent="SettingsHBoxContainer/MoveButtonsVBoxContainer" unique_id=549810564]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_qalxk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DownTextureButton" type="TextureButton" parent="SettingsHBoxContainer/MoveButtonsVBoxContainer" unique_id=404066957]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_bjng0")
+ignore_texture_size = true
+stretch_mode = 5

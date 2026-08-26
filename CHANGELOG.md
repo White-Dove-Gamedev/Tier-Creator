@@ -4,6 +4,16 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0]
+
+### Added
+
+CategorySettings for editing TierName label and background aswell as moving them up and down.
+
+### Changed
+
+Utils.gd is no longer an autoload and instead a class_name with constants
+
 ## [0.14.0]
 
 ### Changed
