@@ -23,5 +23,5 @@ theme_override_constants/separation = 0
 
 [node name="SettingsWindow" parent="." unique_id=945031573 instance=ExtResource("2_kdqrh")]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
+visible = false
+layout_mode = 1
