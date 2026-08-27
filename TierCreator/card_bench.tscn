@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cw03ao0ae4otk"]
+
+[ext_resource type="Script" uid="uid://de50euxac022" path="res://TierCreator/card_bench.gd" id="1_gqif5"]
+
+[node name="CardBench" type="GridContainer" unique_id=472597272]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 12
+script = ExtResource("1_gqif5")

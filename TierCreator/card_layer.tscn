@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cdx6fyndi8jh4"]
-
-[ext_resource type="Script" uid="uid://c32qg3hrss2pd" path="res://TierCreator/card_layer.gd" id="1_lvr3r"]
-
-[node name="CardLayer" type="Node" unique_id=973532903]
-script = ExtResource("1_lvr3r")
