@@ -20,6 +20,7 @@ func set_background_color_rect() -> void:
 	background_color_rect.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
 	background_color_rect.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
 	background_color_rect.size = tier_label.size
+	background_color_rect.color = Color.html("ffe37a")
 
 
 func set_label() -> void:
@@ -30,3 +31,4 @@ func set_label() -> void:
 	tier_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tier_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	tier_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	tier_label.text = "New Tier"
