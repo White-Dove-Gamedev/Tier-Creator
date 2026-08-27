@@ -47,15 +47,14 @@ text = "Tier Color"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "#RRGGBB"
-max_length = 7
-expand_to_text_length = true
+placeholder_text = "RRGGBB"
+max_length = 6
 caret_blink = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=257515166]
 layout_mode = 2
 
-[node name="AddAboveLabel" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1117241033]
+[node name="AddAboveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1117241033]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,12 +64,22 @@ text = "Add Category Above"
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1317261304]
 layout_mode = 2
 
-[node name="AddBelowLabel" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=742060711]
+[node name="AddBelowButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=742060711]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 text = "Add Category Below"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1174873591]
+layout_mode = 2
+
+[node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=655995691]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Remove Category"
 
 [node name="CloseTextureButton" type="TextureButton" parent="." unique_id=327891154]
 unique_name_in_owner = true
