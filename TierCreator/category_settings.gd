@@ -13,14 +13,18 @@ func _ready() -> void:
 
 
 func setup() -> void:
-	custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
-	custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
-	size_flags_vertical = Control.SIZE_EXPAND_FILL
+	set_self()
 	set_up_texture_button()
 	set_down_texture_button()
 	set_settings_texture_button()
 	set_settings_h_box_container()
 	set_move_buttons_v_box_container()
+
+
+func set_self() -> void:
+	custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
+	size_flags_vertical = Control.SIZE_EXPAND_FILL
 
 
 func set_up_texture_button() -> void:
