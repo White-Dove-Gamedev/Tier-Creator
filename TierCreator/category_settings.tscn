@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://48x1btfhphx1" path="res://Assets/Icons/ArrowDown.svg" id="3_bjng0"]
 
 [node name="CategorySettings" type="AspectRatioContainer" unique_id=1508587497]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(24, -1)
 custom_maximum_size = Vector2(96, -1)
 offset_right = 96.0
 offset_bottom = 96.0
@@ -22,6 +22,7 @@ theme_override_constants/separation = 0
 
 [node name="SettingsTextureButton" type="TextureButton" parent="SettingsHBoxContainer" unique_id=824480061]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(72, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
