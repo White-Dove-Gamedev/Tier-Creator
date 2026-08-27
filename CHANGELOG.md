@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 
 SettingsWindow for setting various options for a CategoryTier.
+CategorySettings to edit or move a category.
 
 ## [0.15.0]
 
