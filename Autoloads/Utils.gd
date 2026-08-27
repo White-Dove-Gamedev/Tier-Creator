@@ -1,6 +1,6 @@
-extends Node
+class_name Utils
 
-var min_size_x: float = 96.0
-var min_size_y: float = 96.0
-var max_size_x: float = 96.0
-var max_size_y: float = 96.0
+const MIN_SIZE_X: float = 96.0
+const MIN_SIZE_Y: float = 96.0
+const MAX_SIZE_X: float = 96.0
+const MAX_SIZE_Y: float = 96.0

@@ -58,12 +58,12 @@ func _on_clear_image_button_pressed() -> void:
 
 
 func set_sizes() -> void:
-	preview_label.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	preview_label.custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
-	preview_texture_rect.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	preview_texture_rect.custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
-	preview_panel_container.custom_minimum_size = Vector2(Utils.min_size_x, Utils.min_size_y)
-	preview_panel_container.custom_maximum_size = Vector2(Utils.max_size_x, Utils.max_size_y)
+	preview_label.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	preview_label.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
+	preview_texture_rect.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	preview_texture_rect.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
+	preview_panel_container.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
+	preview_panel_container.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
 
 
 func set_mouse_settings() -> void:
