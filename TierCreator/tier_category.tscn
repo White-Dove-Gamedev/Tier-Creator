@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://mrwhjrorygvm" path="res://TierCreator/category_settings.tscn" id="3_jilyv"]
 
 [node name="TierCategory" type="HBoxContainer" unique_id=1618009400]
-anchors_preset = 10
-anchor_right = 1.0
+offset_right = 1152.0
 offset_bottom = 96.0
-grow_horizontal = 2
 theme_override_constants/separation = 0
 script = ExtResource("1_5sviv")
 
@@ -17,17 +15,12 @@ script = ExtResource("1_5sviv")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CardGridPanelContainer" type="PanelContainer" parent="." unique_id=1765183816]
+[node name="CardGrid" parent="." unique_id=1722160495 instance=ExtResource("2_5sviv")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CardGrid" parent="CardGridPanelContainer" unique_id=1722160495 instance=ExtResource("2_5sviv")]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(960, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CategorySettings" parent="." unique_id=1508587497 instance=ExtResource("3_jilyv")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(24, -1)
 layout_mode = 2
