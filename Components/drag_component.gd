@@ -71,7 +71,7 @@ func handle_deadzone() -> void:
 
 func handle_pickup() -> void:
 	draggable.move_to_front()
-	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
+	draggable.reparent(get_tree().get_first_node_in_group(&"card_bench"))
 	change_state(State.DRAGGING)
 
 

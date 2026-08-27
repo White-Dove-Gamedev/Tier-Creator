@@ -4,6 +4,16 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.0]
+
+### Added
+
+CardBench which will automatically host newly created cards.
+
+### Removed
+
+CardLayer in favour of CardBench.
+
 ## [0.18.0]
 
 ### Added
