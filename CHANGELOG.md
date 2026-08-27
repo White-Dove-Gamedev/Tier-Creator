@@ -4,11 +4,21 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.0]
+
+### Added
+
+DEADZONE state for the DragComponent. The draggable stays "Idle" until the mouse has moved a certain distance from the origin point.
+
+### Removed
+
+Print statements.
+
 ## [0.17.1]
 
 ### Changed
 
-TierName with new default Color and Text
+TierName with new default Color and Text.
 
 ## [0.17.0]
 
