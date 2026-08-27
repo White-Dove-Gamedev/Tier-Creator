@@ -13,11 +13,13 @@ func _ready() -> void:
 
 
 func set_self() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_preset(Control.PRESET_TOP_LEFT)
 	add_theme_constant_override(&"separation", 0)
 
 
 func set_card_grid() -> void:
+	card_grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card_grid.custom_minimum_size = Vector2(Utils.MIN_SIZE_X * 10, -1.0)
 	card_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
