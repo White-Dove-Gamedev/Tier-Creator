@@ -12,6 +12,7 @@ func _ready() -> void:
 func add_drop_node() -> void:
 	var drop_node := DROP_NODE.instantiate() as DropNode
 	add_child(drop_node)
+	drop_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var drop_component := drop_node.find_child("DropComponent", true, false) as DropComponent
 	if drop_component:

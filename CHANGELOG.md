@@ -4,6 +4,17 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.17.0]
+
+### Added
+
+TierList that can be renamed, recolored, added, removed, shuffled and cards assigned.
+Currently known issue: The tier name does not scale well when the label exceeds a minimum size.
+
+### Changed
+
+Some control nodes to ignore mouse input.
+
 ## [0.16.0]
 
 ### Added
