@@ -134,7 +134,6 @@ func _on_tier_category_resized(tier_category: TierCategory) -> void:
 
 
 func _on_category_settings_up_texture_button_pressed(tier_category: TierCategory) -> void:
-	print(tier_category)
 	var index: int = tier_category.get_index()
 	if index == 0:
 		return
@@ -142,7 +141,6 @@ func _on_category_settings_up_texture_button_pressed(tier_category: TierCategory
 
 
 func _on_category_settings_down_texture_button_pressed(tier_category: TierCategory) -> void:
-	print(tier_category)
 	var index: int = tier_category.get_index()
 	if index == tiers_v_box_container.get_child_count() - 1:
 		return
