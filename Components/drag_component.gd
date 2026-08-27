@@ -3,6 +3,7 @@ extends Node
 
 enum State {
 	IDLE,
+	DEADZONE,
 	PICKUP,
 	DRAGGING,
 	DROPPING,
@@ -10,9 +11,12 @@ enum State {
 
 @export var draggable: Control = null
 @export var target_name: StringName = &"drop_target"
+@export var deadzone: float = 10.0
 
 var drag_state := State.IDLE
 var drag_offset := Vector2.ZERO
+var old_position := Vector2.ZERO
+var current_position := Vector2.ZERO
 
 func _ready() -> void:
 	var parent = get_parent() as Control
@@ -21,11 +25,15 @@ func _ready() -> void:
 	else:
 		# TODO: proper error handling
 		return
+	current_position = draggable.global_position
+	old_position = draggable.global_position
 
 func _process(_delta: float) -> void:
 	match drag_state:
 		State.IDLE:
 			pass
+		State.DEADZONE:
+			handle_deadzone()
 		State.PICKUP:
 			handle_pickup()
 		State.DRAGGING:
@@ -40,9 +48,11 @@ func _input(event: InputEvent) -> void:
 		if mouse_over_type(Button):
 			return
 		get_viewport().set_input_as_handled()
-		change_state(State.PICKUP)
-	if event.is_action_released(&"mouse_button_left") and has_point(mouse_pos):
-		if mouse_over_type(Button):
+		drag_offset = get_offset()
+		old_position = mouse_pos + drag_offset
+		change_state(State.DEADZONE)
+	if event.is_action_released(&"mouse_button_left") and (drag_state == State.DRAGGING or drag_state == State.DEADZONE):
+		if mouse_over_type(Button) and not drag_state == State.DEADZONE:
 			return
 		get_viewport().set_input_as_handled()
 		change_state(State.DROPPING)
@@ -52,16 +62,21 @@ func change_state(new_state: State) -> void:
 	drag_state = new_state
 
 
+func handle_deadzone() -> void:
+	current_position = get_viewport().get_mouse_position() + drag_offset
+	if current_position.distance_to(old_position) < deadzone:
+		return
+	change_state(State.PICKUP)
+
+
 func handle_pickup() -> void:
-	drag_offset = get_offset()
 	draggable.move_to_front()
 	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
 	change_state(State.DRAGGING)
 
 
 func handle_dragging() -> void:
-	var mouse_pos = get_viewport().get_mouse_position()
-	draggable.global_position = mouse_pos + drag_offset
+	draggable.global_position = get_viewport().get_mouse_position() + drag_offset
 
 
 func handle_dropping() -> void:
