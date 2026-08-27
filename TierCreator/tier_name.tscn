@@ -15,6 +15,7 @@ custom_minimum_size = Vector2(96, 96)
 custom_maximum_size = Vector2(96, -1)
 layout_mode = 2
 size_flags_vertical = 3
+color = Color(1, 0.8901961, 0.47843137, 1)
 
 [node name="TierLabel" type="Label" parent="." unique_id=345082314]
 unique_name_in_owner = true
@@ -23,6 +24,7 @@ custom_maximum_size = Vector2(96, -1)
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_constants/outline_size = 4
+text = "New Tier"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
