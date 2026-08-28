@@ -12,6 +12,7 @@ enum State {
 	DROPPING,
 }
 
+@export_range(0.0, 1.0, 0.001) var overlap_threshold: float = 0.25
 @export var draggable: Control = null
 @export var target_name: StringName = &"drop_target"
 @export var deadzone: float = 10.0
@@ -103,12 +104,11 @@ func find_drop_target() -> Control:
 		if target == null or drop_component.state == drop_component.State.OCCUPIED:
 			continue
 		var target_rect := target.get_global_rect()
-		if target_rect.intersects(my_rect):
+		if target_rect.intersects(my_rect) and meets_overlap_threshold(my_rect, target_rect):
 			var overlap := my_rect.intersection(target_rect).get_area()
 			if overlap > best_overlap:
 				best_overlap = overlap
 				best_target = target
-
 	return best_target
 
 
@@ -131,3 +131,9 @@ func get_offset() -> Vector2:
 
 func has_point(point: Vector2) -> bool:
 	return Rect2(draggable.global_position, draggable.size).has_point(point)
+
+
+func meets_overlap_threshold(drag_rect: Rect2, drop_rect: Rect2) -> bool:
+	var smaller_area := minf(drag_rect.get_area(), drop_rect.get_area())
+	var overlap_area := drag_rect.intersection(drop_rect).get_area()
+	return overlap_area > smaller_area * overlap_threshold
