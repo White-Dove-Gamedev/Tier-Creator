@@ -1,5 +1,8 @@
+@tool
 class_name DragComponent
 extends Node
+
+signal state_changed(new_state: State)
 
 enum State {
 	IDLE,
@@ -60,6 +63,7 @@ func _input(event: InputEvent) -> void:
 
 func change_state(new_state: State) -> void:
 	drag_state = new_state
+	state_changed.emit(new_state)
 
 
 func handle_deadzone() -> void:
@@ -71,7 +75,7 @@ func handle_deadzone() -> void:
 
 func handle_pickup() -> void:
 	draggable.move_to_front()
-	draggable.reparent(get_tree().get_first_node_in_group(&"card_bench"))
+	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
 	change_state(State.DRAGGING)
 
 
