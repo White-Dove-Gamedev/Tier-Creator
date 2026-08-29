@@ -4,6 +4,20 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [0.20.0]
+
+### Added
+
+CardLayer added back.
+TierCreator. The Main scene from this point on.
+
+### Changed
+
+Moved SettingsWindow logic from TierList to TierCreator due to control layout.
+DragComponent input becomes unhandled_input.
+SettingsWindow now hides by default in its own code.
+TiersVBoxContainer in the TierList scene is now a child of a ScrollContainer node to support scrolling.
+
 ## [0.19.0]
 
 ### Added

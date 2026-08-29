@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 			handle_dropping()
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	if event.is_action_pressed(&"mouse_button_left") and has_point(mouse_pos):
 		if mouse_over_type(Button):

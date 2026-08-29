@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ctxljdj1lc5d5"]
 
 [ext_resource type="Script" uid="uid://bvtwvrcejapxx" path="res://TierCreator/tier_list.gd" id="1_kdqrh"]
-[ext_resource type="PackedScene" uid="uid://pplbxvqaccpg" path="res://TierCreator/settings_window.tscn" id="2_kdqrh"]
 
 [node name="TierList" type="Control" unique_id=506612114]
 layout_mode = 3
@@ -10,18 +9,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_kdqrh")
 
-[node name="TiersVBoxContainer" type="VBoxContainer" parent="." unique_id=277325630]
+[node name="TierListScrollContainer" type="ScrollContainer" parent="." unique_id=254975274]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 96.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/separation = 0
+grow_vertical = 2
+vertical_scroll_mode = 3
 
-[node name="SettingsWindow" parent="." unique_id=945031573 instance=ExtResource("2_kdqrh")]
+[node name="TiersVBoxContainer" type="VBoxContainer" parent="TierListScrollContainer" unique_id=277325630]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
