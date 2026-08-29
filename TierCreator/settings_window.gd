@@ -11,9 +11,14 @@ extends PanelContainer
 @onready var remove_button: Button = %RemoveButton
 
 func _ready() -> void:
+	set_self()
 	set_close_texture_button()
 	set_close_button()
 	set_tier_color_line_edit()
+
+
+func set_self() -> void:
+	hide()
 
 
 func set_close_texture_button() -> void:
