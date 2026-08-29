@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b85yh17o6xm0q" path="res://TierCreator/card.gd" id="1_cnoso"]
 [ext_resource type="Script" uid="uid://coi231ukah42y" path="res://Components/drag_component.gd" id="2_cnoso"]
+[ext_resource type="Script" uid="uid://bpsjuaih7x8x8" path="res://Components/preview_component.gd" id="3_cnoso"]
 
 [node name="Card" type="Control" unique_id=1709808378]
 custom_minimum_size = Vector2(96, 96)
@@ -76,6 +77,12 @@ mouse_filter = 1
 mouse_default_cursor_shape = 2
 text = "Delete"
 
-[node name="DragComponent" type="Node" parent="." unique_id=1178056174]
+[node name="DragComponent" type="Node" parent="." unique_id=1178056174 node_paths=PackedStringArray("draggable")]
 script = ExtResource("2_cnoso")
+draggable = NodePath("..")
 metadata/_custom_type_script = "uid://coi231ukah42y"
+
+[node name="PreviewComponent" type="Node" parent="." unique_id=1371791061 node_paths=PackedStringArray("parent")]
+script = ExtResource("3_cnoso")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://bpsjuaih7x8x8"

@@ -1,5 +1,8 @@
+@tool
 class_name DragComponent
-extends Node
+extends ComponentBase
+
+signal state_changed(new_state: State)
 
 enum State {
 	IDLE,
@@ -9,6 +12,7 @@ enum State {
 	DROPPING,
 }
 
+@export_range(0.0, 1.0, 0.001) var overlap_threshold: float = 0.25
 @export var draggable: Control = null
 @export var target_name: StringName = &"drop_target"
 @export var deadzone: float = 10.0
@@ -28,7 +32,9 @@ func _ready() -> void:
 	current_position = draggable.global_position
 	old_position = draggable.global_position
 
-func _process(_delta: float) -> void:
+
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
 	match drag_state:
 		State.IDLE:
 			pass
@@ -52,17 +58,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		old_position = mouse_pos + drag_offset
 		change_state(State.DEADZONE)
 	if event.is_action_released(&"mouse_button_left") and (drag_state == State.DRAGGING or drag_state == State.DEADZONE):
-		if mouse_over_type(Button) and not drag_state == State.DEADZONE:
-			return
 		get_viewport().set_input_as_handled()
 		change_state(State.DROPPING)
 
 
 func change_state(new_state: State) -> void:
 	drag_state = new_state
+	state_changed.emit(new_state)
 
 
 func handle_deadzone() -> void:
+	draggable.move_to_front()
 	current_position = get_viewport().get_mouse_position() + drag_offset
 	if current_position.distance_to(old_position) < deadzone:
 		return
@@ -70,7 +76,6 @@ func handle_deadzone() -> void:
 
 
 func handle_pickup() -> void:
-	draggable.move_to_front()
 	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
 	change_state(State.DRAGGING)
 
@@ -99,12 +104,11 @@ func find_drop_target() -> Control:
 		if target == null or drop_component.state == drop_component.State.OCCUPIED:
 			continue
 		var target_rect := target.get_global_rect()
-		if target_rect.intersects(my_rect):
+		if target_rect.intersects(my_rect) and meets_overlap_threshold(my_rect, target_rect):
 			var overlap := my_rect.intersection(target_rect).get_area()
 			if overlap > best_overlap:
 				best_overlap = overlap
 				best_target = target
-
 	return best_target
 
 
@@ -127,3 +131,9 @@ func get_offset() -> Vector2:
 
 func has_point(point: Vector2) -> bool:
 	return Rect2(draggable.global_position, draggable.size).has_point(point)
+
+
+func meets_overlap_threshold(drag_rect: Rect2, drop_rect: Rect2) -> bool:
+	var smaller_area := minf(drag_rect.get_area(), drop_rect.get_area())
+	var overlap_area := drag_rect.intersection(drop_rect).get_area()
+	return overlap_area > smaller_area * overlap_threshold

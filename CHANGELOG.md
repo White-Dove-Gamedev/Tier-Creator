@@ -4,18 +4,34 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [0.20.0]
+### [0.21.0]
+
+### Added
+
+PreviewComponent to preview where nodes will be placed. Requires DragComponent sibling to function.
+
+Abstract ComponentBase that every Component node will inherit from.
+
+### Changed
+
+Renamed Autoloads folder to Globals.
+
+## [0.20.0]
 
 ### Added
 
 CardLayer added back.
+
 TierCreator. The Main scene from this point on.
 
 ### Changed
 
 Moved SettingsWindow logic from TierList to TierCreator due to control layout.
+
 DragComponent input becomes unhandled_input.
+
 SettingsWindow now hides by default in its own code.
+
 TiersVBoxContainer in the TierList scene is now a child of a ScrollContainer node to support scrolling.
 
 ## [0.19.0]
@@ -60,6 +76,7 @@ Some control nodes to ignore mouse input.
 ### Added
 
 SettingsWindow for setting various options for a CategoryTier.
+
 CategorySettings to edit or move a category. More specifically the tools made available to do the aforementioned things.
 
 ### Changed
@@ -113,11 +130,13 @@ Drop Targets, meaning Draggables will only drop with matching Droppables.
 ### Added
 
 A Cardgrid node for holding an array of DropNodes which dynamically change in size depending on the amount of Cards.
+
 Added a check to discard any already occupied DropComponents.
 
 ### Changed
 
 Drop component now checks for any descendants when they exit a tree.
+
 Changed static typing logic for a loop.
 
 ## [0.9.0]
@@ -141,7 +160,9 @@ A state on whether DropComponent is occupied by another DragComponent. Also emit
 ### Fixed
 
 A draggable nodes state wouldn't reset to IDLE if a drop got rejected.
+
 A missing check for releasing the mouse button.
+
 All draggable calculations now use global_position.
 
 ## [0.7.0]
@@ -149,6 +170,7 @@ All draggable calculations now use global_position.
 ### Added
 
 A pickup State for DragComponent to simplify code.
+
 Draggable nodes reparent to the droppable nodes on success.
 
 ### Fixed
@@ -175,6 +197,7 @@ Added a card creator that lets the user set text and texture for any card.
 ### Changed
 
 DragComponent now moves the parent node to the front of the screen.
+
 Cards now have a PanelContainer as a background if no texture is selected.
 
 ### Fixed
@@ -186,6 +209,7 @@ DragComponent now consumes the input. Prevents stacked draggables that become in
 ### Added
 
 A Card class.
+
 The Card can have text and texture, as well as being moved and deleted.
 
 A new default font: CourierPrime - Regular
@@ -193,14 +217,14 @@ A new default font: CourierPrime - Regular
 ### Changed
 
 The DragComponent won't change state if the mouse is hovering over a button.
+
 Will probably look into making this more customizable than hard-coding this feature.
 
 ## [0.3.0]
 
 ### Added
 
-A DropComponent that becomes the DragComponents target. When the DragComponent gets
-released, the parent node will center on the parent node of the DropComponent
+A DropComponent that becomes the DragComponents target. When the DragComponent gets released, the parent node will center on the parent node of the DropComponent
 
 ### Fixed
 
