@@ -19,25 +19,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TierListScrollContainer" type="ScrollContainer" parent="CardVBoxContainer" unique_id=1237204295]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="ListVBoxContainer" type="VBoxContainer" parent="CardVBoxContainer/TierListScrollContainer" unique_id=704358663]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="TierList" parent="CardVBoxContainer/TierListScrollContainer/ListVBoxContainer" unique_id=506612114 instance=ExtResource("1_82s2v")]
+[node name="TierList" parent="CardVBoxContainer" unique_id=506612114 instance=ExtResource("1_82s2v")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CardBench" parent="CardVBoxContainer/TierListScrollContainer/ListVBoxContainer" unique_id=472597272 instance=ExtResource("2_splso")]
+[node name="CardBenchScrollContainer" type="ScrollContainer" parent="CardVBoxContainer" unique_id=1814921985]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(-1, 96)
+layout_mode = 2
+vertical_scroll_mode = 3
+
+[node name="CardBench" parent="CardVBoxContainer/CardBenchScrollContainer" unique_id=472597272 instance=ExtResource("2_splso")]
 unique_name_in_owner = true
 layout_mode = 2
 

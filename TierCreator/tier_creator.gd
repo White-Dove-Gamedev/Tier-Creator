@@ -5,18 +5,30 @@ extends Node
 const TIER_CATEGORY = preload("uid://wbyer077b6mf")
 
 @onready var card_v_box_container: VBoxContainer = %CardVBoxContainer
-@onready var list_v_box_container: VBoxContainer = %ListVBoxContainer
-@onready var tier_list_scroll_container: ScrollContainer = %TierListScrollContainer
 @onready var settings_window: SettingsWindow = %SettingsWindow
+@onready var card_bench_scroll_container: ScrollContainer = %CardBenchScrollContainer
 @onready var tier_list: TierList = %TierList
 
 
 func _ready() -> void:
 	set_settings_window()
 	set_card_v_box_container()
-	set_list_v_box_container()
-	set_tier_list_scroll_container()
+	set_card_bench_scroll_container()
 	add_tier_category()
+
+
+func set_settings_window() -> void:
+	settings_window.close_button.pressed.connect(close_settings_window)
+	settings_window.close_texture_button.pressed.connect(close_settings_window)
+
+
+func set_card_v_box_container() -> void:
+	card_v_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func set_card_bench_scroll_container() -> void:
+	card_bench_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+	card_bench_scroll_container.custom_minimum_size = Vector2(-1.0, Utils.MIN_SIZE_Y)
 
 
 func add_tier_category() -> void:
@@ -25,9 +37,27 @@ func add_tier_category() -> void:
 	connect_tier_category_signals(tier_category)
 
 
-func set_settings_window() -> void:
-	settings_window.close_button.pressed.connect(close_settings_window)
-	settings_window.close_texture_button.pressed.connect(close_settings_window)
+func connect_tier_category_signals(tier_category: TierCategory) -> void:
+	tier_category.category_settings.settings_texture_button.pressed \
+		.connect(
+			_on_settings_texture_button_pressed \
+			.bind(tier_category)
+		)
+	tier_category.category_settings.up_texture_button.pressed \
+		.connect(
+			_on_category_settings_up_texture_button_pressed \
+			.bind(tier_category)
+		)
+	tier_category.category_settings.down_texture_button.pressed \
+		.connect(
+			_on_category_settings_down_texture_button_pressed \
+			.bind(tier_category)
+		)
+	tier_category.resized \
+		.connect(
+			_on_tier_category_resized \
+			.bind(tier_category)
+		)
 
 
 func close_settings_window() -> void:
@@ -96,31 +126,11 @@ func _on_add_below_button_pressed(tier_category: TierCategory) -> void:
 
 
 func _on_remove_button_pressed(tier_category: TierCategory) -> void:
+	if tier_list.tiers_v_box_container.get_child_count() == 1:
+		push_warning("Only one category left")
+		return
 	tier_category.queue_free()
 	close_settings_window()
-
-
-func connect_tier_category_signals(tier_category: TierCategory) -> void:
-	tier_category.category_settings.settings_texture_button.pressed \
-		.connect(
-			_on_settings_texture_button_pressed \
-			.bind(tier_category)
-		)
-	tier_category.category_settings.up_texture_button.pressed \
-		.connect(
-			_on_category_settings_up_texture_button_pressed \
-			.bind(tier_category)
-		)
-	tier_category.category_settings.down_texture_button.pressed \
-		.connect(
-			_on_category_settings_down_texture_button_pressed \
-			.bind(tier_category)
-		)
-	tier_category.resized \
-		.connect(
-			_on_tier_category_resized \
-			.bind(tier_category)
-		)
 
 
 func _on_category_settings_up_texture_button_pressed(tier_category: TierCategory) -> void:
@@ -140,15 +150,3 @@ func _on_category_settings_down_texture_button_pressed(tier_category: TierCatego
 func _on_tier_category_resized(tier_category: TierCategory) -> void:
 	tier_category.tier_name.background_color_rect.size = tier_category.size
 	tier_category.tier_name.tier_label.size = tier_category.size
-
-
-func set_card_v_box_container() -> void:
-	card_v_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-
-func set_list_v_box_container() -> void:
-	list_v_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-
-func set_tier_list_scroll_container() -> void:
-	tier_list_scroll_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
