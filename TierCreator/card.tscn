@@ -84,6 +84,5 @@ metadata/_custom_type_script = "uid://coi231ukah42y"
 
 [node name="PreviewComponent" type="Node" parent="." unique_id=1371791061 node_paths=PackedStringArray("parent")]
 script = ExtResource("3_cnoso")
-parent_scene = null
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://bpsjuaih7x8x8"

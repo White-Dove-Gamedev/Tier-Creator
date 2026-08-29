@@ -1,6 +1,6 @@
 @tool
 class_name DragComponent
-extends Node
+extends ComponentBase
 
 signal state_changed(new_state: State)
 
@@ -32,7 +32,9 @@ func _ready() -> void:
 	current_position = draggable.global_position
 	old_position = draggable.global_position
 
-func _process(_delta: float) -> void:
+
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
 	match drag_state:
 		State.IDLE:
 			pass
@@ -56,8 +58,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		old_position = mouse_pos + drag_offset
 		change_state(State.DEADZONE)
 	if event.is_action_released(&"mouse_button_left") and (drag_state == State.DRAGGING or drag_state == State.DEADZONE):
-		if mouse_over_type(Button) and not drag_state == State.DEADZONE:
-			return
 		get_viewport().set_input_as_handled()
 		change_state(State.DROPPING)
 
@@ -68,6 +68,7 @@ func change_state(new_state: State) -> void:
 
 
 func handle_deadzone() -> void:
+	draggable.move_to_front()
 	current_position = get_viewport().get_mouse_position() + drag_offset
 	if current_position.distance_to(old_position) < deadzone:
 		return
@@ -75,7 +76,6 @@ func handle_deadzone() -> void:
 
 
 func handle_pickup() -> void:
-	draggable.move_to_front()
 	draggable.reparent(get_tree().get_first_node_in_group(&"card_layer"))
 	change_state(State.DRAGGING)
 

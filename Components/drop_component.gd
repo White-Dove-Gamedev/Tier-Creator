@@ -1,6 +1,6 @@
 @tool
 class_name DropComponent
-extends Node
+extends ComponentBase
 
 signal occupancy_changed(state: State)
 

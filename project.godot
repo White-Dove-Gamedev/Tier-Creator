@@ -24,8 +24,8 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://Assets/": "yellow",
-"res://Autoloads/": "gray",
 "res://Components/": "gray",
+"res://Globals/": "gray",
 "res://TierCreator/": "green"
 }
 
