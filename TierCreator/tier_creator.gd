@@ -8,12 +8,15 @@ const TIER_CATEGORY = preload("uid://wbyer077b6mf")
 @onready var settings_window: SettingsWindow = %SettingsWindow
 @onready var card_bench_scroll_container: ScrollContainer = %CardBenchScrollContainer
 @onready var tier_list: TierList = %TierList
+@onready var card_creator: CardCreator = %CardCreator
 
 
 func _ready() -> void:
 	set_settings_window()
 	set_card_v_box_container()
 	set_card_bench_scroll_container()
+	set_screenshot_texture_button()
+	set_save_file_dialog()
 	add_tier_category()
 
 
@@ -31,10 +34,39 @@ func set_card_bench_scroll_container() -> void:
 	card_bench_scroll_container.custom_minimum_size = Vector2(-1.0, Utils.MIN_SIZE_Y)
 
 
+func set_screenshot_texture_button() -> void:
+	card_creator.screenshot_texture_button.pressed.connect(_on_screenshot_texture_button_pressed)
+
+
+func set_save_file_dialog() -> void:
+	card_creator.save_file_dialog.file_selected.connect(_on_save_file_selected)
+
+
+func _on_screenshot_texture_button_pressed() -> void:
+	card_creator.save_file_dialog.popup_centered()
+
+
+func _on_save_file_selected(path: String) -> void:
+	var img := await capture_screenshot(tier_list.tiers_v_box_container)
+	img.save_png(path)
+
+
 func add_tier_category() -> void:
 	var tier_category := TIER_CATEGORY.instantiate() as TierCategory
 	tier_list.tiers_v_box_container.add_child(tier_category)
 	connect_tier_category_signals(tier_category)
+
+
+func capture_screenshot(node: Control) -> Image:
+	var sub_viewport := SubViewport.new()
+	sub_viewport.size = node.size
+	sub_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	add_child(sub_viewport)
+	sub_viewport.add_child(node.duplicate(DUPLICATE_SIGNALS))
+	await RenderingServer.frame_post_draw
+	var img := sub_viewport.get_texture().get_image()
+	sub_viewport.queue_free()
+	return img
 
 
 func connect_tier_category_signals(tier_category: TierCategory) -> void:
