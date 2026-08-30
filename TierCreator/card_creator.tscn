@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsqvo200gwsv4"]
 
 [ext_resource type="Script" uid="uid://b43psoose2suo" path="res://TierCreator/card_creator.gd" id="1_5uojh"]
+[ext_resource type="Texture2D" uid="uid://cy3lcrcutw4t1" path="res://Assets/Icons/Screenshot.svg" id="2_duitp"]
 
 [node name="CardCreator" type="PanelContainer" unique_id=614640915]
 anchors_preset = 7
@@ -87,3 +88,27 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Clear Image"
+
+[node name="ScreenshotTextureButton" type="TextureButton" parent="PreviewHBoxContainer" unique_id=892036664]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_duitp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UploadFileDialog" type="FileDialog" parent="." unique_id=1768600321]
+unique_name_in_owner = true
+title = "Upload a texture"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.*")
+use_native_dialog = true
+
+[node name="SaveFileDialog" type="FileDialog" parent="." unique_id=228731796]
+unique_name_in_owner = true
+title = "Save the Tierlist"
+access = 2
+filters = PackedStringArray("*.png")
+use_native_dialog = true
