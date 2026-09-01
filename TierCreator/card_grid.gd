@@ -32,3 +32,13 @@ func set_self() -> void:
 	columns = 10
 	add_theme_constant_override(&"h_separation", 0)
 	add_theme_constant_override(&"v_separation", 0)
+
+
+func get_cards() -> Array[Card]:
+	var cards: Array[Card]
+	for drop_node in get_children() as Array[DropNode]:
+		var card := drop_node.find_children("", "Card", true, false)
+		if not card:
+			continue
+		cards.append(card[0] as Card)
+	return cards

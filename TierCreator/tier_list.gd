@@ -17,8 +17,7 @@ func set_self() -> void:
 
 
 func set_tier_list_scroll_container() -> void:
-	#tier_list_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-	pass
+	tier_list_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 
 
 func set_tiers_v_box_container() -> void:

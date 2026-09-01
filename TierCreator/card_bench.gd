@@ -31,3 +31,18 @@ func _on_drop_component_occupancy_changed(state: DropComponent.State, drop_node:
 func set_self() -> void:
 	add_to_group(&"card_bench")
 	columns = 12
+
+
+func get_cards() -> Array[Card]:
+	var cards: Array[Card]
+	for drop_node in get_children() as Array[DropNode]:
+		var card := drop_node.find_children("", "Card", true, false)
+		if not card:
+			continue
+		cards.append(card[0] as Card)
+	return cards
+
+
+func clear_bench() -> void:
+	for child in get_children().slice(0, -1):
+		child.queue_free()
