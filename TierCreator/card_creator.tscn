@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b43psoose2suo" path="res://TierCreator/card_creator.gd" id="1_5uojh"]
 [ext_resource type="Texture2D" uid="uid://cy3lcrcutw4t1" path="res://Assets/Icons/Screenshot.svg" id="2_duitp"]
+[ext_resource type="Texture2D" uid="uid://dheohub0wsqq2" path="res://Assets/Icons/Import.svg" id="3_xrcux"]
+[ext_resource type="Texture2D" uid="uid://d4icejarlk0c6" path="res://Assets/Icons/Export.svg" id="4_4dpod"]
 
 [node name="CardCreator" type="PanelContainer" unique_id=614640915]
 anchors_preset = 7
@@ -89,12 +91,44 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Clear Image"
 
-[node name="ScreenshotTextureButton" type="TextureButton" parent="PreviewHBoxContainer" unique_id=892036664]
+[node name="SharesVBoxContainer" type="VBoxContainer" parent="PreviewHBoxContainer" unique_id=1563249461]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScreenshotTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer" unique_id=892036664]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+custom_maximum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_duitp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SavesHBoxContainer" type="HBoxContainer" parent="PreviewHBoxContainer/SharesVBoxContainer" unique_id=258819298]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ImportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=1879255872]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+custom_maximum_size = Vector2(48, 48)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_xrcux")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ExportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=647230858]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+custom_maximum_size = Vector2(48, 48)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_4dpod")
 ignore_texture_size = true
 stretch_mode = 5
 

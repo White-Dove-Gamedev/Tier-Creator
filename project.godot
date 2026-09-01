@@ -26,6 +26,7 @@ folder_colors={
 "res://Assets/": "yellow",
 "res://Components/": "gray",
 "res://Globals/": "gray",
+"res://SaveData/": "gray",
 "res://TierCreator/": "green"
 }
 

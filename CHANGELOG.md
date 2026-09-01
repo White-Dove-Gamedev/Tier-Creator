@@ -4,6 +4,14 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.0]
+
+### Added
+
+Importing and Exporting of created Tierlists. With it comes SaveData Custom Resources.
+
+Additional Export/Import Buttons to the CardCreator scene.
+
 ## [0.22.0]
 
 ### Added

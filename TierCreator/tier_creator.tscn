@@ -48,3 +48,18 @@ metadata/_custom_type_script = "uid://c32qg3hrss2pd"
 [node name="SettingsWindow" parent="." unique_id=945031573 instance=ExtResource("6_y30xa")]
 unique_name_in_owner = true
 visible = false
+
+[node name="ImportFileDialog" type="FileDialog" parent="." unique_id=466292900]
+unique_name_in_owner = true
+title = "Import a TierList"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="ExportFileDialog" type="FileDialog" parent="." unique_id=787387604]
+unique_name_in_owner = true
+title = "Export a TierList"
+access = 2
+filters = PackedStringArray("*.tres")
+use_native_dialog = true

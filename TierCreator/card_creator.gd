@@ -15,6 +15,10 @@ const CARD = preload("uid://cpyj3ex8t8ttf")
 @onready var screenshot_texture_button: TextureButton = %ScreenshotTextureButton
 @onready var upload_file_dialog: FileDialog = %UploadFileDialog
 @onready var save_file_dialog: FileDialog = %SaveFileDialog
+@onready var shares_v_box_container: VBoxContainer = %SharesVBoxContainer
+@onready var saves_h_box_container: HBoxContainer = %SavesHBoxContainer
+@onready var import_texture_button: TextureButton = %ImportTextureButton
+@onready var export_texture_button: TextureButton = %ExportTextureButton
 
 func _ready() -> void:
 	set_self()
@@ -29,7 +33,10 @@ func _ready() -> void:
 	set_clear_image_button()
 	set_upload_file_dialog()
 	set_save_file_dialog()
-	set_screenshot_texture_button()
+	set_shares_v_box_container()
+	set_saves_h_box_container()
+	set_import_texture_button()
+	set_export_texture_button()
 
 
 func set_self() -> void:
@@ -59,10 +66,10 @@ func set_preview_panel_container() -> void:
 
 
 func set_screenshot_texture_button() -> void:
-	screenshot_texture_button.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
-	screenshot_texture_button.custom_minimum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
-	screenshot_texture_button.ignore_texture_size = true
+	screenshot_texture_button.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y) / 2
+	screenshot_texture_button.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y) / 2
 	screenshot_texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+	screenshot_texture_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	screenshot_texture_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 
@@ -86,6 +93,26 @@ func set_upload_image_button() -> void:
 func set_clear_image_button() -> void:
 	clear_image_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	clear_image_button.pressed.connect(_on_clear_image_button_pressed)
+
+
+func set_shares_v_box_container() -> void:
+	shares_v_box_container.add_theme_constant_override(&"separation", 0)
+
+
+func set_saves_h_box_container() -> void:
+	saves_h_box_container.add_theme_constant_override(&"separation", 0)
+
+
+func set_import_texture_button() -> void:
+	import_texture_button.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y) / 2
+	import_texture_button.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y) / 2
+	import_texture_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+
+func set_export_texture_button() -> void:
+	export_texture_button.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y) / 2
+	export_texture_button.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y) / 2
+	export_texture_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 
 func set_upload_file_dialog() -> void:

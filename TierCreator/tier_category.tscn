@@ -8,6 +8,7 @@
 [node name="TierCategory" type="HBoxContainer" unique_id=1618009400]
 offset_right = 1152.0
 offset_bottom = 96.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 script = ExtResource("1_5sviv")
 
@@ -20,6 +21,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(960, -1)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="CategorySettings" parent="." unique_id=1508587497 instance=ExtResource("3_jilyv")]
 unique_name_in_owner = true
