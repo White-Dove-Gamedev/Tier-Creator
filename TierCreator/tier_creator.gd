@@ -63,7 +63,7 @@ func set_screenshot_texture_button() -> void:
 
 func capture_screenshot(node: Control) -> Image:
 	var sub_viewport := SubViewport.new()
-	sub_viewport.size = node.size
+	sub_viewport.size = node.size - Vector2(Utils.MIN_SIZE_X, 0.0)
 	sub_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(sub_viewport)
 	sub_viewport.add_child(node.duplicate(DUPLICATE_SIGNALS))
