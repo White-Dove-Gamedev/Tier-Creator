@@ -29,7 +29,7 @@ func _on_drop_component_occupancy_changed(state: DropComponent.State, drop_node:
 
 
 func set_self() -> void:
-	columns = floorf((get_viewport_rect().size.x - Utils.MAX_SIZE_X * 2) / Utils.MAX_SIZE_X)
+	columns = floori((get_viewport_rect().size.x - Utils.MAX_SIZE_X * 2) / Utils.MAX_SIZE_X)
 	add_theme_constant_override(&"h_separation", 0)
 	add_theme_constant_override(&"v_separation", 0)
 

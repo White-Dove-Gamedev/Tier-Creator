@@ -1,6 +1,6 @@
 @tool
 class_name TierCategory
-extends HBoxContainer
+extends PanelContainer
 
 @onready var tier_name: TierName = %TierName
 @onready var card_grid: CardGrid = %CardGrid
