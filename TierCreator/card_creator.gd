@@ -121,6 +121,7 @@ func set_upload_file_dialog() -> void:
 	upload_file_dialog.mode = Window.MODE_WINDOWED
 	upload_file_dialog.access = FileDialog.ACCESS_FILESYSTEM
 	upload_file_dialog.filters = ["*.*"]
+	#upload_file_dialog.filters = ["*.png,*.jpg,*.jpeg"]
 	upload_file_dialog.title = "Upload a texture"
 	upload_file_dialog.file_selected.connect(_on_upload_file_selected)
 
@@ -138,6 +139,8 @@ func _on_upload_file_selected(path: String) -> void:
 	var image := Image.load_from_file(path)
 	if image == null:
 		return
+	var target_size := Vector2i(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
+	image.resize(target_size.x, target_size.y, Image.INTERPOLATE_LANCZOS)
 	preview_texture_rect.texture = ImageTexture.create_from_image(image)
 
 

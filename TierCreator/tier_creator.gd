@@ -124,7 +124,7 @@ func build_tier_list_save_data() -> TierListData:
 		for card in tier_category.card_grid.get_cards() as Array[Card]:
 			var card_data = CardData.new()
 			card_data.name = card.card_label.text
-			card_data.texture = card.card_texture_rect.texture
+			set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
 			tier_category_data.cards.append(card_data)
 		save_data.categories.append(tier_category_data)
 	return save_data
@@ -135,7 +135,7 @@ func build_card_bench_save_data() -> CardBenchData:
 	for card in card_bench.get_cards() as Array[Card]:
 		var card_data := CardData.new()
 		card_data.name = card.card_label.text
-		card_data.texture = card.card_texture_rect.texture
+		set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
 		save_data.cards.append(card_data)
 	return save_data
 
@@ -163,19 +163,32 @@ func import_save_data(path: String) -> void:
 			var droppable := tier_category.card_grid.get_child(tier_category.card_grid.get_child_count() - 1) as DropNode
 			droppable.add_child(card)
 			card.card_label.text = card_data.name
-			card.card_texture_rect.texture = card_data.texture
+			card.card_texture_rect.texture = get_card_texture(card_data)
 	for card_bench_data in save_data.card_bench.cards:
 		var card := CARD.instantiate() as Card
 		var droppable := card_bench.get_child(card_bench.get_child_count() - 1) as DropNode
 		droppable.add_child(card)
 		card.card_label.text = card_bench_data.name
-		card.card_texture_rect.texture = card_bench_data.texture
+		card.card_texture_rect.texture = get_card_texture(card_bench_data)
 
 
 func clear_scene() -> void:
 	for child in tier_list.tiers_v_box_container.get_children():
 		child.queue_free()
 	card_bench.clear_bench()
+
+
+func set_card_texture_bytes(card_data: CardData, image: Image) -> void:
+	card_data.texture_bytes = image.save_png_to_buffer()
+
+
+func get_card_texture(card_data: CardData) -> ImageTexture:
+	var image := Image.new()
+	var err := image.load_png_from_buffer(card_data.texture_bytes)
+	if not err == OK:
+		push_error("Failed decoding card texture")
+		return null
+	return ImageTexture.create_from_image(image)
 #endregion Save Management
 
 #region Tierlist Settings

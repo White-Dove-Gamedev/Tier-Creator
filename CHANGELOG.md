@@ -15,6 +15,10 @@ DropComponent can now be dropped between other Cards in a GridContainer.
 Screenshots no longer include the settings on the right.
 Changed TierName Node from Container to PanelContainer.
 
+### Fixed
+
+Reduced save file size by nearly 100x by resizing uploaded images and saving as a png byte array instead of raw image data.
+
 ### Removed
 
 Redudant resizing code related to TierName.
