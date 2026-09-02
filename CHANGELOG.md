@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Screenshots no longer include the settings on the right.
 Changed TierName Node from Container to PanelContainer.
 
+### Removed
+
+Redudant resizing code related to TierName.
+
 ## [0.24.0]
 
 ### Added
