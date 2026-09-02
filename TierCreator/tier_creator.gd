@@ -52,10 +52,6 @@ func add_tier_category() -> void:
 	connect_tier_category_signals(tier_category)
 
 
-func _on_tier_category_resized(tier_category: TierCategory) -> void:
-	tier_category.tier_name.background_color_rect.size = tier_category.size
-	tier_category.tier_name.tier_label.size = tier_category.size
-
 #region Screenshots
 func set_screenshot_texture_button() -> void:
 	card_creator.screenshot_texture_button.pressed.connect(_on_screenshot_texture_button_pressed)
@@ -202,11 +198,6 @@ func connect_tier_category_signals(tier_category: TierCategory) -> void:
 	tier_category.category_settings.down_texture_button.pressed \
 		.connect(
 			_on_category_settings_down_texture_button_pressed \
-			.bind(tier_category)
-		)
-	tier_category.resized \
-		.connect(
-			_on_tier_category_resized \
 			.bind(tier_category)
 		)
 

@@ -1,6 +1,6 @@
 @tool
 class_name TierName
-extends Container
+extends PanelContainer
 
 @onready var background_color_rect: ColorRect = %BackgroundColorRect
 @onready var tier_label: Label = %TierLabel
@@ -17,9 +17,8 @@ func set_self() -> void:
 
 
 func set_background_color_rect() -> void:
-	background_color_rect.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
-	background_color_rect.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, -1.0)
-	background_color_rect.size = tier_label.size
+	background_color_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	background_color_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	background_color_rect.color = Color.html("ffe37a")
 
 
