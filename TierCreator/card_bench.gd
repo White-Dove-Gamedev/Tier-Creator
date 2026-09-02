@@ -30,8 +30,10 @@ func _on_drop_component_occupancy_changed(state: DropComponent.State, drop_node:
 
 func set_self() -> void:
 	add_to_group(&"card_bench")
-	columns = 12
-
+	var viewport_width = get_viewport_rect().size.x
+	var card_amount = floorf(viewport_width / Utils.MIN_SIZE_X)
+	columns = int(card_amount)
+	custom_minimum_size = Vector2(card_amount * Utils.MIN_SIZE_X, -1.0)
 
 func get_cards() -> Array[Card]:
 	var cards: Array[Card]
