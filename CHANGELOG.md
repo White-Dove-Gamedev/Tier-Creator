@@ -13,6 +13,7 @@ DropComponent can now be dropped between other Cards in a GridContainer.
 ### Changed
 
 Screenshots no longer include the settings on the right.
+
 Changed TierName Node from Container to PanelContainer.
 
 ### Fixed
