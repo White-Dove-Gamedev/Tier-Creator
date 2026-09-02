@@ -24,8 +24,35 @@ func _ready() -> void:
 	set_save_file_dialog()
 	set_settings_window()
 	set_screenshot_texture_button()
+	set_default_tier_list()
 
-	add_tier_category()
+
+func set_default_tier_list() -> void:
+	var s_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(s_tier_category)
+	s_tier_category.tier_name.tier_label.text = "S"
+	s_tier_category.tier_name.background_color_rect.color = Color.html("ff3a40")
+	connect_tier_category_signals(s_tier_category)
+	var a_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(a_tier_category)
+	a_tier_category.tier_name.tier_label.text = "A"
+	a_tier_category.tier_name.background_color_rect.color = Color.html("ffa34d")
+	connect_tier_category_signals(a_tier_category)
+	var b_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(b_tier_category)
+	b_tier_category.tier_name.tier_label.text = "B"
+	b_tier_category.tier_name.background_color_rect.color = Color.html("ffd94d")
+	connect_tier_category_signals(b_tier_category)
+	var c_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(c_tier_category)
+	c_tier_category.tier_name.tier_label.text = "C"
+	c_tier_category.tier_name.background_color_rect.color = Color.html("aaeb4d")
+	connect_tier_category_signals(c_tier_category)
+	var d_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(d_tier_category)
+	d_tier_category.tier_name.tier_label.text = "D"
+	d_tier_category.tier_name.background_color_rect.color = Color.html("59e44a")
+	connect_tier_category_signals(d_tier_category)
 
 
 func set_card_v_box_container() -> void:
