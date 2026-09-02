@@ -16,6 +16,10 @@ Screenshots no longer include the settings on the right.
 
 Changed TierName Node from Container to PanelContainer.
 
+Default TierList has multiple tiers now.
+
+Hardcoded column sizes to be calculated by viewport width instead.
+
 ### Fixed
 
 Reduced save file size by nearly 100x by resizing uploaded images and saving as a png byte array instead of raw image data.
