@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [0.25.0]
 
+### Added
+
+DropComponent can now be dropped between other Cards in a GridContainer.
+
 ### Changed
 
 Screenshots no longer include the settings on the right.

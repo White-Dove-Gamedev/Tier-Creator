@@ -7,6 +7,7 @@ extends ComponentBase
 var preview: Control
 var drag_component: DragComponent
 var state: DragComponent.State
+var previous_grid: GridContainer
 
 func _ready() -> void:
 	parent = get_parent() as Control
@@ -50,13 +51,28 @@ func handle_pickup() -> void:
 
 
 func handle_dragging() -> void:
-	var target = drag_component.find_drop_target()
-	if target and not target == parent:
+	var target := drag_component.find_drop_target(true) as Control
+	if target:
+		previous_grid = target.get_parent() as GridContainer
+		var unoccupied_droppable := find_unoccupied_droppable()
+		if unoccupied_droppable:
+			previous_grid.move_child(unoccupied_droppable, target.get_index())
 		preview.show()
 		preview.reparent(target)
 	else:
+		if previous_grid:
+			previous_grid.move_child(find_unoccupied_droppable(), previous_grid.get_child_count() - 1)
 		preview.hide()
 		preview.reparent(get_tree().get_first_node_in_group(&"card_layer"))
+
+
+func find_unoccupied_droppable() -> Control:
+	if previous_grid:
+		var drop_components = previous_grid.find_children("", "DropComponent", true, false) as Array[DropComponent]
+		for drop_component in drop_components:
+			if not drop_component.draggable:
+				return drop_component.droppable
+	return null
 
 
 func handle_dropping() -> void:
