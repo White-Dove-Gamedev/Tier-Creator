@@ -215,7 +215,7 @@ func close_settings_window() -> void:
 	settings_window.hide()
 	settings_window.tier_name_line_edit.text = ""
 	settings_window.tier_name_line_edit.text_changed.disconnect(_on_tier_name_changed)
-	settings_window.tier_color_line_edit.text_submitted.disconnect(_on_tier_color_text_submitted)
+	settings_window.tier_color_picker_button.color_changed.disconnect(_on_tier_color_picker_button_color_changed)
 	settings_window.add_above_button.pressed.disconnect(_on_add_above_button_pressed)
 	settings_window.add_below_button.pressed.disconnect(_on_add_below_button_pressed)
 	settings_window.remove_button.pressed.disconnect(_on_remove_button_pressed)
@@ -229,10 +229,10 @@ func _on_settings_texture_button_pressed(tier_category: TierCategory) -> void:
 			_on_tier_name_changed \
 			.bind(tier_category)
 			)
-	settings_window.tier_color_line_edit.text \
-		= tier_category.tier_name.background_color_rect.color.to_html(false)
-	settings_window.tier_color_line_edit.text_submitted \
-		.connect(_on_tier_color_text_submitted \
+	settings_window.tier_color_picker_button.color \
+		= tier_category.tier_name.background_color_rect.color
+	settings_window.tier_color_picker_button.color_changed \
+		.connect(_on_tier_color_picker_button_color_changed \
 			.bind(tier_category)
 			)
 	settings_window.add_above_button.pressed \
@@ -253,10 +253,7 @@ func _on_tier_name_changed(new_text: String, tier_category: TierCategory) -> voi
 	tier_category.tier_name.tier_label.text = new_text
 
 
-func _on_tier_color_text_submitted(new_text: String, tier_category: TierCategory) -> void:
-	if not Color.html_is_valid(new_text):
-		return
-	var color = Color.html(new_text)
+func _on_tier_color_picker_button_color_changed(color: Color, tier_category: TierCategory) -> void:
 	tier_category.tier_name.background_color_rect.color = color
 
 

@@ -20,36 +20,35 @@ theme_override_constants/margin_right = 400
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1468218675]
+[node name="TierNameHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1468218675]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TierNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=669612182]
+[node name="TierNameLabel" type="Label" parent="MarginContainer/VBoxContainer/TierNameHBoxContainer" unique_id=669612182]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Tier Name"
 
-[node name="TierNameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=439599810]
+[node name="TierNameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TierNameHBoxContainer" unique_id=439599810]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=354345361]
+[node name="TierColorHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=354345361]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TierColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1554267679]
+[node name="TierColorLabel" type="Label" parent="MarginContainer/VBoxContainer/TierColorHBoxContainer" unique_id=1554267679]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Tier Color"
 
-[node name="TierColorLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=945744325]
+[node name="TierColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/TierColorHBoxContainer" unique_id=58449877]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "RRGGBB"
-max_length = 6
-caret_blink = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=257515166]
 layout_mode = 2
