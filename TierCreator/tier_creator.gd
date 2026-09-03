@@ -57,6 +57,7 @@ func set_default_tier_list() -> void:
 
 func set_card_v_box_container() -> void:
 	card_v_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card_v_box_container.add_theme_constant_override(&"separation", 0)
 
 
 func set_card_bench_scroll_container() -> void:

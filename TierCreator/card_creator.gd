@@ -63,6 +63,7 @@ func set_preview_panel_container() -> void:
 	preview_panel_container.custom_minimum_size = Vector2(Utils.MIN_SIZE_X, Utils.MIN_SIZE_Y)
 	preview_panel_container.custom_maximum_size = Vector2(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
 	preview_panel_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	preview_panel_container.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 
 func set_screenshot_texture_button() -> void:
@@ -97,6 +98,7 @@ func set_clear_image_button() -> void:
 
 func set_shares_v_box_container() -> void:
 	shares_v_box_container.add_theme_constant_override(&"separation", 0)
+	shares_v_box_container.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 
 func set_saves_h_box_container() -> void:
