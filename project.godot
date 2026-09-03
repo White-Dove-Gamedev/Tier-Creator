@@ -27,11 +27,13 @@ folder_colors={
 "res://Components/": "gray",
 "res://Globals/": "gray",
 "res://SaveData/": "gray",
+"res://Themes/": "blue",
 "res://TierCreator/": "green"
 }
 
 [gui]
 
+theme/custom="uid://bkj7oet21dmr7"
 theme/custom_font="uid://coq85tu3n33dg"
 
 [input]
