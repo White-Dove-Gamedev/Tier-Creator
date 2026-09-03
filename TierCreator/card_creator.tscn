@@ -29,22 +29,23 @@ theme_override_constants/separation = 2
 
 [node name="PreviewPanelContainer" type="PanelContainer" parent="PreviewHBoxContainer" unique_id=1001501414]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
-custom_maximum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="PreviewTextureRect" type="TextureRect" parent="PreviewHBoxContainer/PreviewPanelContainer" unique_id=1720797538]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
-custom_maximum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="PreviewLabel" type="Label" parent="PreviewHBoxContainer/PreviewPanelContainer" unique_id=2098208813]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
-custom_maximum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/line_spacing = 0
@@ -94,12 +95,13 @@ text = "Clear Image"
 [node name="SharesVBoxContainer" type="VBoxContainer" parent="PreviewHBoxContainer" unique_id=1563249461]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 0
 
 [node name="ScreenshotTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer" unique_id=892036664]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-custom_maximum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
@@ -114,8 +116,8 @@ theme_override_constants/separation = 0
 
 [node name="ImportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=1879255872]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-custom_maximum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_xrcux")
@@ -124,8 +126,8 @@ stretch_mode = 5
 
 [node name="ExportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=647230858]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
-custom_maximum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_4dpod")

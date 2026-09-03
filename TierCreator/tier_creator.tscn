@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bsqvo200gwsv4" path="res://TierCreator/card_creator.tscn" id="4_ur4ft"]
 [ext_resource type="PackedScene" uid="uid://pplbxvqaccpg" path="res://TierCreator/settings_window.tscn" id="6_y30xa"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_y30xa"]
+color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+
 [node name="TierCreator" type="Node" unique_id=247970823]
 script = ExtResource("1_splso")
 
@@ -24,15 +27,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HSeparator" type="HSeparator" parent="CardVBoxContainer" unique_id=962661364]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_y30xa")
+
 [node name="CardBenchScrollContainer" type="ScrollContainer" parent="CardVBoxContainer" unique_id=1814921985]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(-1, 96)
+custom_minimum_size = Vector2(-1, 72)
 layout_mode = 2
 vertical_scroll_mode = 3
 
 [node name="CardBench" parent="CardVBoxContainer/CardBenchScrollContainer" unique_id=472597272 instance=ExtResource("2_splso")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1152, -1)
 layout_mode = 2
+columns = 16
 
 [node name="CardCreator" parent="CardVBoxContainer" unique_id=614640915 instance=ExtResource("4_ur4ft")]
 unique_name_in_owner = true

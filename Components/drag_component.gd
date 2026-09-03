@@ -85,7 +85,7 @@ func handle_dragging() -> void:
 
 
 func handle_dropping() -> void:
-	var target := find_drop_target()
+	var target := find_drop_target(true)
 	if not target or target.find_child("DragComponent", true, false):
 		change_state(State.IDLE)
 		return
@@ -94,14 +94,14 @@ func handle_dropping() -> void:
 	change_state(State.IDLE)
 
 
-func find_drop_target() -> Control:
+func find_drop_target(include_occupied: bool = false) -> Control:
 	var my_rect := draggable.get_global_rect()
 	var best_target: Control = null
 	var best_overlap: float = 0.0
 
 	for drop_component in get_tree().get_nodes_in_group(target_name) as Array[DropComponent]:
 		var target := drop_component.droppable
-		if target == null or drop_component.state == drop_component.State.OCCUPIED:
+		if target == null or (not include_occupied and drop_component.state == drop_component.State.OCCUPIED):
 			continue
 		var target_rect := target.get_global_rect()
 		if target_rect.intersects(my_rect) and meets_overlap_threshold(my_rect, target_rect):

@@ -24,12 +24,40 @@ func _ready() -> void:
 	set_save_file_dialog()
 	set_settings_window()
 	set_screenshot_texture_button()
+	set_default_tier_list()
 
-	add_tier_category()
+
+func set_default_tier_list() -> void:
+	var s_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(s_tier_category)
+	s_tier_category.tier_name.tier_label.text = "S"
+	s_tier_category.tier_name.background_color_rect.color = Color.html("ff3a40")
+	connect_tier_category_signals(s_tier_category)
+	var a_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(a_tier_category)
+	a_tier_category.tier_name.tier_label.text = "A"
+	a_tier_category.tier_name.background_color_rect.color = Color.html("ffa34d")
+	connect_tier_category_signals(a_tier_category)
+	var b_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(b_tier_category)
+	b_tier_category.tier_name.tier_label.text = "B"
+	b_tier_category.tier_name.background_color_rect.color = Color.html("ffd94d")
+	connect_tier_category_signals(b_tier_category)
+	var c_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(c_tier_category)
+	c_tier_category.tier_name.tier_label.text = "C"
+	c_tier_category.tier_name.background_color_rect.color = Color.html("aaeb4d")
+	connect_tier_category_signals(c_tier_category)
+	var d_tier_category := TIER_CATEGORY.instantiate() as TierCategory
+	tier_list.tiers_v_box_container.add_child(d_tier_category)
+	d_tier_category.tier_name.tier_label.text = "D"
+	d_tier_category.tier_name.background_color_rect.color = Color.html("59e44a")
+	connect_tier_category_signals(d_tier_category)
 
 
 func set_card_v_box_container() -> void:
 	card_v_box_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card_v_box_container.add_theme_constant_override(&"separation", 0)
 
 
 func set_card_bench_scroll_container() -> void:
@@ -52,10 +80,6 @@ func add_tier_category() -> void:
 	connect_tier_category_signals(tier_category)
 
 
-func _on_tier_category_resized(tier_category: TierCategory) -> void:
-	tier_category.tier_name.background_color_rect.size = tier_category.size
-	tier_category.tier_name.tier_label.size = tier_category.size
-
 #region Screenshots
 func set_screenshot_texture_button() -> void:
 	card_creator.screenshot_texture_button.pressed.connect(_on_screenshot_texture_button_pressed)
@@ -63,7 +87,7 @@ func set_screenshot_texture_button() -> void:
 
 func capture_screenshot(node: Control) -> Image:
 	var sub_viewport := SubViewport.new()
-	sub_viewport.size = node.size
+	sub_viewport.size = node.size - Vector2(Utils.MIN_SIZE_X, 0.0)
 	sub_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(sub_viewport)
 	sub_viewport.add_child(node.duplicate(DUPLICATE_SIGNALS))
@@ -128,7 +152,7 @@ func build_tier_list_save_data() -> TierListData:
 		for card in tier_category.card_grid.get_cards() as Array[Card]:
 			var card_data = CardData.new()
 			card_data.name = card.card_label.text
-			card_data.texture = card.card_texture_rect.texture
+			set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
 			tier_category_data.cards.append(card_data)
 		save_data.categories.append(tier_category_data)
 	return save_data
@@ -139,7 +163,7 @@ func build_card_bench_save_data() -> CardBenchData:
 	for card in card_bench.get_cards() as Array[Card]:
 		var card_data := CardData.new()
 		card_data.name = card.card_label.text
-		card_data.texture = card.card_texture_rect.texture
+		set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
 		save_data.cards.append(card_data)
 	return save_data
 
@@ -167,19 +191,32 @@ func import_save_data(path: String) -> void:
 			var droppable := tier_category.card_grid.get_child(tier_category.card_grid.get_child_count() - 1) as DropNode
 			droppable.add_child(card)
 			card.card_label.text = card_data.name
-			card.card_texture_rect.texture = card_data.texture
+			card.card_texture_rect.texture = get_card_texture(card_data)
 	for card_bench_data in save_data.card_bench.cards:
 		var card := CARD.instantiate() as Card
 		var droppable := card_bench.get_child(card_bench.get_child_count() - 1) as DropNode
 		droppable.add_child(card)
 		card.card_label.text = card_bench_data.name
-		card.card_texture_rect.texture = card_bench_data.texture
+		card.card_texture_rect.texture = get_card_texture(card_bench_data)
 
 
 func clear_scene() -> void:
 	for child in tier_list.tiers_v_box_container.get_children():
 		child.queue_free()
 	card_bench.clear_bench()
+
+
+func set_card_texture_bytes(card_data: CardData, image: Image) -> void:
+	card_data.texture_bytes = image.save_png_to_buffer()
+
+
+func get_card_texture(card_data: CardData) -> ImageTexture:
+	var image := Image.new()
+	var err := image.load_png_from_buffer(card_data.texture_bytes)
+	if not err == OK:
+		push_error("Failed decoding card texture")
+		return null
+	return ImageTexture.create_from_image(image)
 #endregion Save Management
 
 #region Tierlist Settings
@@ -202,11 +239,6 @@ func connect_tier_category_signals(tier_category: TierCategory) -> void:
 	tier_category.category_settings.down_texture_button.pressed \
 		.connect(
 			_on_category_settings_down_texture_button_pressed \
-			.bind(tier_category)
-		)
-	tier_category.resized \
-		.connect(
-			_on_tier_category_resized \
 			.bind(tier_category)
 		)
 

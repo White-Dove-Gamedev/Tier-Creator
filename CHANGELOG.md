@@ -4,6 +4,34 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.0]
+
+### Added
+
+DropComponent can now be dropped between other Cards in a GridContainer.
+
+A default theme.
+
+### Changed
+
+Screenshots no longer include the settings on the right.
+
+Changed TierName Node from Container to PanelContainer.
+
+Default TierList has multiple tiers now.
+
+Hardcoded column sizes to be calculated by viewport width instead.
+
+Scaled down size of everything by 0.75.
+
+### Fixed
+
+Reduced save file size by nearly 100x by resizing uploaded images and saving as a png byte array instead of raw image data.
+
+### Removed
+
+Redudant resizing code related to TierName.
+
 ## [0.24.0]
 
 ### Added
