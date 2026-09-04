@@ -62,7 +62,7 @@ func set_card_v_box_container() -> void:
 
 func set_card_bench_scroll_container() -> void:
 	card_bench_scroll_container.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-	card_bench_scroll_container.custom_minimum_size = Vector2(-1.0, Utils.MIN_SIZE_Y)
+	card_bench_scroll_container.custom_minimum_size = Vector2(-1.0, Utils.MIN_SIZE_Y * 2.5)
 
 
 func set_save_file_dialog() -> void:

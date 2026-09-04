@@ -4,6 +4,12 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.3]
+
+### Changed
+
+Increased CardBench Height by 2.5 in the TierCreator Scene.
+
 ## [0.25.2]
 
 ### Changed
