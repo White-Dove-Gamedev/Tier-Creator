@@ -34,6 +34,7 @@ func set_close_texture_button() -> void:
 
 func set_tier_color_picker_button() -> void:
 	tier_color_picker_button.custom_minimum_size = Vector2(-1.0, tier_name_line_edit.size.y)
+	tier_color_picker_button.get_picker().presets_visible = false
 
 
 func set_close_button() -> void:
