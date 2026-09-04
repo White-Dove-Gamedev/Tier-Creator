@@ -4,6 +4,12 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.2]
+
+### Changed
+
+Hidden the ColorPicker presets. They go off screen when toggled while being not being useful enough at this point in time.
+
 ## [0.25.1]
 
 ### Changed
