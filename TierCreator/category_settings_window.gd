@@ -1,5 +1,5 @@
 @tool
-class_name SettingsWindow
+class_name CategorySettingsWindow
 extends PanelContainer
 
 @onready var close_texture_button: TextureButton = %CloseTextureButton

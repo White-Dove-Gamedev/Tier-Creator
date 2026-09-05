@@ -11,7 +11,9 @@ const TIER_CATEGORY = preload("uid://wbyer077b6mf")
 @onready var card_v_box_container: VBoxContainer = %CardVBoxContainer
 @onready var export_file_dialog: FileDialog = %ExportFileDialog
 @onready var import_file_dialog: FileDialog = %ImportFileDialog
-@onready var settings_window: SettingsWindow = %SettingsWindow
+@onready var upload_file_dialog: FileDialog = %UploadFileDialog
+@onready var category_settings_window: CategorySettingsWindow = %CategorySettingsWindow
+@onready var card_settings_window: CardSettingsWindow = %CardSettingsWindow
 @onready var tier_list: TierList = %TierList
 
 
@@ -21,9 +23,12 @@ func _ready() -> void:
 	set_card_v_box_container()
 	set_export_file_dialog()
 	set_import_file_dialog()
+	set_upload_file_dialog()
 	set_save_file_dialog()
-	set_settings_window()
+	set_category_settings_window()
 	set_screenshot_texture_button()
+	set_card_settings_window()
+
 	set_default_tier_list()
 
 
@@ -72,6 +77,7 @@ func set_save_file_dialog() -> void:
 func set_card_creator() -> void:
 	card_creator.export_texture_button.pressed.connect(_on_export_texture_button_pressed)
 	card_creator.import_texture_button.pressed.connect(_on_import_texture_button_pressed)
+	card_creator.card_created.connect(_on_card_creator_card_created)
 
 
 func add_tier_category() -> void:
@@ -220,63 +226,67 @@ func get_card_texture(card_data: CardData) -> ImageTexture:
 #endregion Save Management
 
 #region Tierlist Settings
-func set_settings_window() -> void:
-	settings_window.close_button.pressed.connect(close_settings_window)
-	settings_window.close_texture_button.pressed.connect(close_settings_window)
+func set_category_settings_window() -> void:
+	category_settings_window.close_button.pressed.connect(close_category_settings_window)
+	category_settings_window.close_texture_button.pressed.connect(close_category_settings_window)
 
 
 func connect_tier_category_signals(tier_category: TierCategory) -> void:
 	tier_category.category_settings.settings_texture_button.pressed \
 		.connect(
-			_on_settings_texture_button_pressed \
+			_on_category_settings_texture_button_pressed
 			.bind(tier_category)
 		)
 	tier_category.category_settings.up_texture_button.pressed \
 		.connect(
-			_on_category_settings_up_texture_button_pressed \
+			_on_category_settings_up_texture_button_pressed
 			.bind(tier_category)
 		)
 	tier_category.category_settings.down_texture_button.pressed \
 		.connect(
-			_on_category_settings_down_texture_button_pressed \
+			_on_category_settings_down_texture_button_pressed
 			.bind(tier_category)
 		)
 
 
-func close_settings_window() -> void:
-	settings_window.hide()
-	settings_window.tier_name_line_edit.text = ""
-	settings_window.tier_name_line_edit.text_changed.disconnect(_on_tier_name_changed)
-	settings_window.tier_color_picker_button.color_changed.disconnect(_on_tier_color_picker_button_color_changed)
-	settings_window.add_above_button.pressed.disconnect(_on_add_above_button_pressed)
-	settings_window.add_below_button.pressed.disconnect(_on_add_below_button_pressed)
-	settings_window.remove_button.pressed.disconnect(_on_remove_button_pressed)
+func close_category_settings_window() -> void:
+	category_settings_window.hide()
+	category_settings_window.tier_name_line_edit.text = ""
+	category_settings_window.tier_name_line_edit.text_changed.disconnect(_on_tier_name_changed)
+	category_settings_window.tier_color_picker_button.color_changed.disconnect(_on_tier_color_picker_button_color_changed)
+	category_settings_window.add_above_button.pressed.disconnect(_on_add_above_button_pressed)
+	category_settings_window.add_below_button.pressed.disconnect(_on_add_below_button_pressed)
+	category_settings_window.remove_button.pressed.disconnect(_on_remove_button_pressed)
 
 
-func _on_settings_texture_button_pressed(tier_category: TierCategory) -> void:
-	settings_window.show()
-	settings_window.tier_name_line_edit.text = tier_category.tier_name.tier_label.text
-	settings_window.tier_name_line_edit.text_changed \
+func _on_category_settings_texture_button_pressed(tier_category: TierCategory) -> void:
+	category_settings_window.show()
+	category_settings_window.tier_name_line_edit.text = tier_category.tier_name.tier_label.text
+	category_settings_window.tier_name_line_edit.text_changed \
 		.connect(
-			_on_tier_name_changed \
+			_on_tier_name_changed
 			.bind(tier_category)
 			)
-	settings_window.tier_color_picker_button.color \
+	category_settings_window.tier_color_picker_button.color \
 		= tier_category.tier_name.background_color_rect.color
-	settings_window.tier_color_picker_button.color_changed \
-		.connect(_on_tier_color_picker_button_color_changed \
+	category_settings_window.tier_color_picker_button.color_changed \
+		.connect(
+			_on_tier_color_picker_button_color_changed
 			.bind(tier_category)
 			)
-	settings_window.add_above_button.pressed \
-		.connect(_on_add_above_button_pressed \
+	category_settings_window.add_above_button.pressed \
+		.connect(
+			_on_add_above_button_pressed
 			.bind(tier_category)
 			)
-	settings_window.add_below_button.pressed \
-		.connect(_on_add_below_button_pressed \
+	category_settings_window.add_below_button.pressed \
+		.connect(
+			_on_add_below_button_pressed
 			.bind(tier_category)
 			)
-	settings_window.remove_button.pressed \
-		.connect(_on_remove_button_pressed \
+	category_settings_window.remove_button.pressed \
+		.connect(
+			_on_remove_button_pressed
 			.bind(tier_category)
 			)
 
@@ -310,7 +320,7 @@ func _on_remove_button_pressed(tier_category: TierCategory) -> void:
 		push_warning("Only one category left")
 		return
 	tier_category.queue_free()
-	close_settings_window()
+	close_category_settings_window()
 
 
 func _on_category_settings_up_texture_button_pressed(tier_category: TierCategory) -> void:
@@ -326,3 +336,111 @@ func _on_category_settings_down_texture_button_pressed(tier_category: TierCatego
 		return
 	tier_list.tiers_v_box_container.move_child(tier_category, index + 1)
 #endregion Tierlist Settings
+
+#region Card Settings
+func set_card_settings_window() -> void:
+	card_settings_window.close_texture_button.pressed.connect(close_card_settings_window)
+	card_settings_window.close_button.pressed.connect(close_card_settings_window)
+
+
+func set_upload_file_dialog() -> void:
+	upload_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	upload_file_dialog.use_native_dialog = true
+	upload_file_dialog.mode = Window.MODE_WINDOWED
+	upload_file_dialog.access = FileDialog.ACCESS_FILESYSTEM
+	upload_file_dialog.filters = ["*.*"]
+	upload_file_dialog.title = "Upload an Image"
+
+
+func close_card_settings_window() -> void:
+	card_settings_window.hide()
+	card_settings_window.card_line_edit.text = ""
+	card_settings_window.card_line_edit.text_changed \
+		.disconnect(
+			_on_card_settings_window_card_line_edit_text_changed
+		)
+	card_settings_window.upload_image_button.pressed \
+		.disconnect(
+			_on_card_settings_window_upload_image_button_pressed
+		)
+	card_settings_window.clear_image_button.pressed \
+		.disconnect(
+			_on_card_settings_window_clear_image_button_pressed
+		)
+	card_settings_window.delete_button.pressed \
+		.disconnect(
+			_on_card_settings_window_delete_button_pressed
+		)
+	upload_file_dialog.file_selected \
+		.disconnect(
+			_on_upload_file_dialog_file_selected
+		)
+
+
+func _on_card_creator_card_created(card: Card) -> void:
+	connect_card_signals(card)
+
+
+func connect_card_signals(card: Card) -> void:
+	card.options_texture_button.pressed \
+	.connect(
+		_on_card_options_texture_button_pressed
+		.bind(card)
+		)
+
+
+func _on_card_options_texture_button_pressed(card: Card) -> void:
+	card_settings_window.show()
+	card_settings_window.card_line_edit.text = card.card_label.text
+	card_settings_window.card_line_edit.text_changed \
+		.connect(
+			_on_card_settings_window_card_line_edit_text_changed
+			.bind(card)
+		)
+	card_settings_window.upload_image_button.pressed \
+		.connect(
+			_on_card_settings_window_upload_image_button_pressed
+		)
+	card_settings_window.clear_image_button.pressed \
+		.connect(
+			_on_card_settings_window_clear_image_button_pressed
+			.bind(card)
+		)
+	card_settings_window.delete_button.pressed \
+		.connect(
+			_on_card_settings_window_delete_button_pressed
+			.bind(card)
+		)
+	upload_file_dialog.file_selected \
+		.connect(
+			_on_upload_file_dialog_file_selected
+			.bind(card)
+		)
+
+
+func _on_card_settings_window_card_line_edit_text_changed(new_text: String, card: Card) -> void:
+	card.card_label.text = new_text
+
+
+func _on_card_settings_window_delete_button_pressed(card: Card) -> void:
+	card.queue_free()
+	close_card_settings_window()
+
+
+func _on_card_settings_window_upload_image_button_pressed() -> void:
+	upload_file_dialog.popup_centered()
+
+
+func _on_upload_file_dialog_file_selected(path: String, card: Card) -> void:
+	var image := Image.load_from_file(path)
+	if image == null:
+		return
+	var target_size := Vector2i(Utils.MAX_SIZE_X, Utils.MAX_SIZE_Y)
+	image.resize(target_size.x, target_size.y, Image.INTERPOLATE_LANCZOS)
+	card.card_texture_rect.texture = ImageTexture.create_from_image(image)
+
+
+func _on_card_settings_window_clear_image_button_pressed(card: Card) -> void:
+	card.card_texture_rect.texture = null
+	card.background_panel_container.show()
+#endregion Card Settings
