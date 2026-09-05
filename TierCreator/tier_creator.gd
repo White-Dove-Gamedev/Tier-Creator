@@ -198,12 +198,14 @@ func import_save_data(path: String) -> void:
 			droppable.add_child(card)
 			card.card_label.text = card_data.name
 			card.card_texture_rect.texture = get_card_texture(card_data)
+			connect_card_signals(card)
 	for card_bench_data in save_data.card_bench.cards:
 		var card := CARD.instantiate() as Card
 		var droppable := card_bench.get_child(card_bench.get_child_count() - 1) as DropNode
 		droppable.add_child(card)
 		card.card_label.text = card_bench_data.name
 		card.card_texture_rect.texture = get_card_texture(card_bench_data)
+		connect_card_signals(card)
 
 
 func clear_scene() -> void:

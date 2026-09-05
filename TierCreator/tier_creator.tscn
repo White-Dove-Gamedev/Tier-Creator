@@ -81,3 +81,8 @@ use_native_dialog = true
 
 [node name="UploadFileDialog" type="FileDialog" parent="." unique_id=594770740]
 unique_name_in_owner = true
+title = "Upload an Image"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.*")
+use_native_dialog = true
