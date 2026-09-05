@@ -3,12 +3,16 @@
 ## Description
 Tier Creator is a Tier making software designed to create and share tierlists with other people.
 
+## Installation
+Releases are made for both Linux and Windows.
+
+You can find the appropriate installations for your System over on the Releases section.
+
 ## Usage
 Just launch the installed executable and start rating or creating.
 
+## Roadmap
+No concrete Roadmap yet. At the moment everything is done at the spur of a moment.
+
 ## Contributing
-Contributions are welcome.
-
-In order to contribute to this project you have to create an issue, whether it is for a bug or a suggestion. The issue should be as simple as possible and should contain details on how it may be implemented. If it requires multiple steps, create sub-issues in order to break them apart.
-
-Pull request may only be made from existing issues. If there isn't one, make one first.
+Thanks for being interested in contributing if you're reading this. You can go over to the [CONTRIBUTING.md](CONTRIBUTING.md) to see a bit more on how to contribute.
