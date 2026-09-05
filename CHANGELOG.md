@@ -16,6 +16,8 @@ CardSettingsWindow for editing created cards.
 
 Renamed SettingsWindow to CategorySettingsWindow.
 
+Default Theme.
+
 ### Removed
 
 Delete Button from the Card, replacing it with the options button.
