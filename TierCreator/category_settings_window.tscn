@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://pplbxvqaccpg"]
+
+[ext_resource type="Script" uid="uid://d2i3r4q7pbdck" path="res://TierCreator/category_settings_window.gd" id="1_s8wkm"]
+[ext_resource type="Texture2D" uid="uid://p8t0nvhkvrxw" path="res://Assets/Icons/Cross.svg" id="2_m1apr"]
+
+[node name="CategorySettingsWindow" type="PanelContainer" unique_id=945031573]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8wkm")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1752143961]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=964185655]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TierNameHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1468218675]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TierNameLabel" type="Label" parent="MarginContainer/VBoxContainer/TierNameHBoxContainer" unique_id=669612182]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tier Name"
+
+[node name="TierNameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TierNameHBoxContainer" unique_id=439599810]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TierColorHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=354345361]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TierColorLabel" type="Label" parent="MarginContainer/VBoxContainer/TierColorHBoxContainer" unique_id=1554267679]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tier Color"
+
+[node name="TierColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/TierColorHBoxContainer" unique_id=58449877]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(-1, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=257515166]
+layout_mode = 2
+
+[node name="AddAboveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1117241033]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Add Category Above"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1317261304]
+layout_mode = 2
+
+[node name="AddBelowButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=742060711]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Add Category Below"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1174873591]
+layout_mode = 2
+
+[node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=655995691]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Remove Category"
+
+[node name="CloseTextureButton" type="TextureButton" parent="." unique_id=327891154]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_m1apr")
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="." unique_id=767270655]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+text = "close"

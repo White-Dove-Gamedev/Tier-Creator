@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://wbyer077b6mf"]
+
+[ext_resource type="Script" uid="uid://cgjgcuq66nlhs" path="res://TierCreator/tier_category.gd" id="1_5sviv"]
+[ext_resource type="PackedScene" uid="uid://b3g44bxhdk3lx" path="res://TierCreator/tier_name.tscn" id="1_k55r5"]
+[ext_resource type="PackedScene" uid="uid://b4e6wwphfn6dm" path="res://TierCreator/card_grid.tscn" id="2_5sviv"]
+[ext_resource type="PackedScene" uid="uid://mrwhjrorygvm" path="res://TierCreator/category_settings.tscn" id="3_jilyv"]
+
+[node name="TierCategory" type="PanelContainer" unique_id=8652485]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("1_5sviv")
+
+[node name="CategoryHBoxContainer" type="HBoxContainer" parent="." unique_id=1618009400]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TierName" parent="CategoryHBoxContainer" unique_id=1170985678 instance=ExtResource("1_k55r5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, -1)
+layout_mode = 2
+
+[node name="LeftVSeparator" type="VSeparator" parent="CategoryHBoxContainer" unique_id=2099754210]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CardGrid" parent="CategoryHBoxContainer" unique_id=1722160495 instance=ExtResource("2_5sviv")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1008, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+columns = 14
+
+[node name="RightVSeparator" type="VSeparator" parent="CategoryHBoxContainer" unique_id=1164313028]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CategorySettings" parent="CategoryHBoxContainer" unique_id=1508587497 instance=ExtResource("3_jilyv")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, -1)
+custom_maximum_size = Vector2(72, -1)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1441141731]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0

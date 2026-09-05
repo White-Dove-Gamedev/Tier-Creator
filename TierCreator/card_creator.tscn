@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bsqvo200gwsv4"]
+
+[ext_resource type="Script" uid="uid://b43psoose2suo" path="res://TierCreator/card_creator.gd" id="1_5uojh"]
+[ext_resource type="Texture2D" uid="uid://cy3lcrcutw4t1" path="res://Assets/Icons/Screenshot.svg" id="2_duitp"]
+[ext_resource type="Texture2D" uid="uid://dheohub0wsqq2" path="res://Assets/Icons/Import.svg" id="3_xrcux"]
+[ext_resource type="Texture2D" uid="uid://d4icejarlk0c6" path="res://Assets/Icons/Export.svg" id="4_4dpod"]
+
+[node name="CardCreator" type="PanelContainer" unique_id=614640915]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -169.5
+offset_top = -85.0
+offset_right = 169.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_5uojh")
+
+[node name="PreviewHBoxContainer" type="HBoxContainer" parent="." unique_id=869121589]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="PreviewPanelContainer" type="PanelContainer" parent="PreviewHBoxContainer" unique_id=1001501414]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="PreviewTextureRect" type="TextureRect" parent="PreviewHBoxContainer/PreviewPanelContainer" unique_id=1720797538]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PreviewLabel" type="Label" parent="PreviewHBoxContainer/PreviewPanelContainer" unique_id=2098208813]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="PreviewHBoxContainer" unique_id=1299284534]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CreateCardButton" type="Button" parent="PreviewHBoxContainer/SettingsVBoxContainer" unique_id=811084163]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "Create Card"
+
+[node name="CardTextLineEdit" type="LineEdit" parent="PreviewHBoxContainer/SettingsVBoxContainer" unique_id=105487158]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+backspace_deletes_composite_character_enabled = true
+clear_button_enabled = true
+
+[node name="ImageButtonHBoxContainer" type="HBoxContainer" parent="PreviewHBoxContainer/SettingsVBoxContainer" unique_id=215575589]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="UploadImageButton" type="Button" parent="PreviewHBoxContainer/SettingsVBoxContainer/ImageButtonHBoxContainer" unique_id=708548960]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Upload Image"
+
+[node name="ClearImageButton" type="Button" parent="PreviewHBoxContainer/SettingsVBoxContainer/ImageButtonHBoxContainer" unique_id=1826257067]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Clear Image"
+
+[node name="SharesVBoxContainer" type="VBoxContainer" parent="PreviewHBoxContainer" unique_id=1563249461]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="ScreenshotTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer" unique_id=892036664]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_duitp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SavesHBoxContainer" type="HBoxContainer" parent="PreviewHBoxContainer/SharesVBoxContainer" unique_id=258819298]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ImportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=1879255872]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_xrcux")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ExportTextureButton" type="TextureButton" parent="PreviewHBoxContainer/SharesVBoxContainer/SavesHBoxContainer" unique_id=647230858]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+custom_maximum_size = Vector2(36, 36)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_4dpod")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UploadFileDialog" type="FileDialog" parent="." unique_id=1768600321]
+unique_name_in_owner = true
+title = "Upload a texture"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.*")
+use_native_dialog = true
+
+[node name="SaveFileDialog" type="FileDialog" parent="." unique_id=228731796]
+unique_name_in_owner = true
+title = "Save the Tierlist"
+access = 2
+filters = PackedStringArray("*.png")
+use_native_dialog = true

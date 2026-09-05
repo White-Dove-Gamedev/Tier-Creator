@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://h8so8o6761pu"]
+
+[ext_resource type="Script" uid="uid://jqugte46xhln" path="res://TierCreator/card_settings_window.gd" id="1_pjwf4"]
+[ext_resource type="Texture2D" uid="uid://p8t0nvhkvrxw" path="res://Assets/Icons/Cross.svg" id="2_hat2q"]
+
+[node name="CardSettingsWindow" type="PanelContainer" unique_id=1812726900]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pjwf4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=620897797]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=995269244]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1228168513]
+layout_mode = 2
+
+[node name="CardLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1660680208]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Label"
+
+[node name="CardLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1152520744]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=803606]
+layout_mode = 2
+
+[node name="UploadImageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1818440207]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upload Image"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1550212663]
+layout_mode = 2
+
+[node name="ClearImageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1167648811]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear Image"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=294267086]
+layout_mode = 2
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=250202086]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Delete"
+
+[node name="CloseButton" type="Button" parent="." unique_id=1464267980]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Close"
+
+[node name="CloseTextureButton" type="TextureButton" parent="." unique_id=2118182832]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_hat2q")
+ignore_texture_size = true
+stretch_mode = 4

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b4e6wwphfn6dm"]
+
+[ext_resource type="Script" uid="uid://c8ktem3v5rr2e" path="res://TierCreator/card_grid.gd" id="1_27jul"]
+
+[node name="CardGrid" type="GridContainer" unique_id=1722160495]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+script = ExtResource("1_27jul")
