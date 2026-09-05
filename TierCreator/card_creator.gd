@@ -2,6 +2,8 @@
 class_name CardCreator
 extends PanelContainer
 
+signal card_created(card: Card)
+
 const CARD = preload("uid://cpyj3ex8t8ttf")
 
 @onready var preview_h_box_container: HBoxContainer = %PreviewHBoxContainer
@@ -172,3 +174,4 @@ func _on_create_card_button_pressed() -> void:
 	if card.card_texture_rect.texture:
 		card.background_panel_container.hide()
 	card.move_to_front()
+	card_created.emit(card)

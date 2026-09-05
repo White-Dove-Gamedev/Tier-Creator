@@ -4,6 +4,24 @@ All changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.26.0]
+
+### Added
+
+CardCreator: Added the card_created signal.
+
+CardSettingsWindow for editing created cards.
+
+### Changed
+
+Renamed SettingsWindow to CategorySettingsWindow.
+
+Default Theme.
+
+### Removed
+
+Delete Button from the Card, replacing it with the options button.
+
 ## [0.25.3]
 
 ### Changed

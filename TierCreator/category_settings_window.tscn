@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://pplbxvqaccpg"]
 
-[ext_resource type="Script" uid="uid://d2i3r4q7pbdck" path="res://TierCreator/settings_window.gd" id="1_s8wkm"]
+[ext_resource type="Script" uid="uid://d2i3r4q7pbdck" path="res://TierCreator/category_settings_window.gd" id="1_s8wkm"]
 [ext_resource type="Texture2D" uid="uid://p8t0nvhkvrxw" path="res://Assets/Icons/Cross.svg" id="2_m1apr"]
 
-[node name="SettingsWindow" type="PanelContainer" unique_id=945031573]
+[node name="CategorySettingsWindow" type="PanelContainer" unique_id=945031573]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

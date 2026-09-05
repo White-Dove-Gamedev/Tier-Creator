@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cw03ao0ae4otk" path="res://TierCreator/card_bench.tscn" id="2_splso"]
 [ext_resource type="Script" uid="uid://c32qg3hrss2pd" path="res://TierCreator/card_layer.gd" id="3_y30xa"]
 [ext_resource type="PackedScene" uid="uid://bsqvo200gwsv4" path="res://TierCreator/card_creator.tscn" id="4_ur4ft"]
-[ext_resource type="PackedScene" uid="uid://pplbxvqaccpg" path="res://TierCreator/settings_window.tscn" id="6_y30xa"]
+[ext_resource type="PackedScene" uid="uid://pplbxvqaccpg" path="res://TierCreator/category_settings_window.tscn" id="6_y30xa"]
+[ext_resource type="PackedScene" uid="uid://h8so8o6761pu" path="res://TierCreator/card_settings_window.tscn" id="7_ur4ft"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_y30xa"]
 color = Color(0.8784314, 0.8784314, 0.8784314, 1)
@@ -35,7 +36,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_y30xa")
 
 [node name="CardBenchScrollContainer" type="ScrollContainer" parent="CardVBoxContainer" unique_id=1814921985]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(-1, 72)
+custom_minimum_size = Vector2(-1, 180)
 layout_mode = 2
 vertical_scroll_mode = 3
 
@@ -56,7 +57,10 @@ unique_name_in_owner = true
 script = ExtResource("3_y30xa")
 metadata/_custom_type_script = "uid://c32qg3hrss2pd"
 
-[node name="SettingsWindow" parent="." unique_id=945031573 instance=ExtResource("6_y30xa")]
+[node name="CategorySettingsWindow" parent="." unique_id=945031573 instance=ExtResource("6_y30xa")]
+unique_name_in_owner = true
+
+[node name="CardSettingsWindow" parent="." unique_id=1812726900 instance=ExtResource("7_ur4ft")]
 unique_name_in_owner = true
 visible = false
 
@@ -73,4 +77,12 @@ unique_name_in_owner = true
 title = "Export a TierList"
 access = 2
 filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="UploadFileDialog" type="FileDialog" parent="." unique_id=594770740]
+unique_name_in_owner = true
+title = "Upload an Image"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.*")
 use_native_dialog = true
