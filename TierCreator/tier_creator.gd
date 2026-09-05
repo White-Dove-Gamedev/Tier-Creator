@@ -169,7 +169,8 @@ func build_card_bench_save_data() -> CardBenchData:
 	for card in card_bench.get_cards() as Array[Card]:
 		var card_data := CardData.new()
 		card_data.name = card.card_label.text
-		set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
+		if card.card_texture_rect.texture:
+			set_card_texture_bytes(card_data, card.card_texture_rect.texture.get_image())
 		save_data.cards.append(card_data)
 	return save_data
 
@@ -219,6 +220,8 @@ func set_card_texture_bytes(card_data: CardData, image: Image) -> void:
 
 
 func get_card_texture(card_data: CardData) -> ImageTexture:
+	if card_data.texture_bytes.is_empty():
+		return null
 	var image := Image.new()
 	var err := image.load_png_from_buffer(card_data.texture_bytes)
 	if not err == OK:
